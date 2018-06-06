@@ -1,5 +1,5 @@
 # bothub.it issues
-### Dedicated repository to receive bothub.it issues
+Dedicated repository to receive bothub.it issues
 
 The issues created here will be analysed and validated. They can be submitted to the [bothub](https://github.com/push-flow/bothub), [bothub-webapp](https://github.com/push-flow/bothub-webapp), and/or [bothub-nlp](https://github.com/push-flow/bothub-nlp) repository as well.
 
