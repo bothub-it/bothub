@@ -1,5 +1,3 @@
-### Bug Template
-
 **Description:**  
 Short and descriptive example bug report title
 
