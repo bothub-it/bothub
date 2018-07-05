@@ -1,42 +1,51 @@
-# bothub.it issues
-Dedicated repository to receive bothub.it issues
+# Bothub
+[![Build Status](https://travis-ci.org/Ilhasoft/bothub-engine.svg?branch=master)](https://travis-ci.org/Ilhasoft/bothub-engine) [![Coverage Status](https://coveralls.io/repos/github/Ilhasoft/bothub-engine/badge.svg?branch=master)](https://coveralls.io/github/Ilhasoft/bothub-engine?branch=master) [![Python Version](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/) [![License GPL-3.0](https://img.shields.io/badge/license-%20GPL--3.0-yellow.svg)](https://github.com/Ilhasoft/bothub-engine/blob/master/LICENSE)
 
-The issues created here will be analysed and validated. They can be submitted to the [bothub](https://github.com/push-flow/bothub), [bothub-webapp](https://github.com/push-flow/bothub-webapp), and/or [bothub-nlp](https://github.com/push-flow/bothub-nlp) repository as well.
+Bothub is an open platform for predicting, training and sharing NLP datasets in multiple languages.
+
+
+## About
+
+Bothub is the Github for NLP datasets, that allows to build, improve and translate them.
+
+You can read more about the project's purpose on this
+[blog post](https://push.al/en/this-is-how-bothub-started/).
+
+
+## What's here
+
+This repo is the "master" repo for all Bothub-related projects. It hosts 
+the documentation and other misc. resources for Bothub. Code for other
+projects, like the [WebApp](https://github.com/ilhasoft/bothub-webapp), [Engine](https://github.com/ilhasoft/bothub-engine) 
+and [NLP](https://github.com/ilhasoft/bothub-nlp), are hosted in other 
+repositories.
+
+## Documentation
+
+Coming soon!
+
+## Contributing
+
+**We are looking for collaboration from the Open Source community!** There's so much we want to do, 
+including but not limited to: enhancing existing applications with new features, 
+optimizing the NLP tools and algorithms involved that boost accuracy, and bringing our work closer to
+the public to leverage their inputs via blog posts and tutorials.
+
+* Please read our [contribution guidelines](https://github.com/ilhasoft/bothub/blob/master/.github/CONTRIBUTING.md) 
+for details on what and how you can contribute.
+
+* Report a bug by using [this guideline](https://github.com/ilhasoft/bothub/blob/master/.github/CONTRIBUTING.md#report-a-bug) 
+for details on what and how you can contribute.
 
 ## Using the issue tracker
 
-The issue tracker is the preferred channel for [bug reports](#bugs) and [features requests](#features), but please respect the following restrictions:
+The issues created here will be analysed and validated. They can be submitted to the [bothub](https://github.com/ilhasoft/bothub), [bothub-webapp](https://github.com/ilhasoft/bothub-webapp), and/or [bothub-nlp](https://github.com/ilhasoft/bothub-nlp) repository as well.
+
+The issue tracker is the preferred channel for [bug reports](https://github.com/ilhasoft/bothub/blob/master/.github/CONTRIBUTING.md#report-a-bug) and [features requests](#features), but please respect the following restrictions:
 
 - Please **do not** use the issue tracker for personal support requests (send an email to bothub@ilhasoft.com.br).
 
 - Please **do not** derail or troll issues. Keep the discussion on topic and respect the opinions of others.
-
-<a name="bugs"></a>
-## Bug reports
-
-A bug is a _demonstrable problem_ that is caused by the code in the repository. Good bug reports are extremely helpful - thank you!
-
-Guidelines for bug reports:
-
-**Use the GitHub issue search** &mdash; check if the issue has already been reported.
-1. If it was reported you can contribute leaving a comment.
-2. If it wasn't you can create a new issue using the label `bug`.
-
-A good bug report shouldn't leave others needing to chase you up for more information. Please try to be as detailed as possible in your report. What is your environment? What steps will reproduce the issue? What browser(s) and OS experienced the problem? What would you expect to be the outcome? All these details will help people to fix any potential bugs.
-
-Example:
-
-> Short and descriptive example bug report title
->
-> A summary of the issue and the browser/OS environment in which it occurs. If
-> suitable, include the steps required to reproduce the bug.
->
-> 1. This is the first step
-> 2. This is the second step
-> 3. Further steps, etc.
->
-> Any other information you want to share that is relevant to the issue being
-> reported.
 
 <a name="features"></a>
 ## Feature requests
