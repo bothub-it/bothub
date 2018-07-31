@@ -4,6 +4,8 @@ from .service import Service
 
 
 class Bothub(Service):
+    GLOBAL_CONFIG_FILE = '.bothub-service.yaml'
+
     @classmethod
     def api_request(cls, path, data=None):
         session = Session()
@@ -21,11 +23,7 @@ class Bothub(Service):
         response = cls.api_request(
             'login',
             {'username': username, 'password': password})
-        try:
-            response.raise_for_status()
-            return response.json().get('token')
-        except Exception as e:
-            raise Exception(' / '.join([
-                f"{field}: {'; '.join(errors)}" for field, errors in
-                response.json().items()
-            ]))
+        response.raise_for_status()
+        token = response.json().get('token')
+        cls.update_global_config(user_token=token)
+        return token

@@ -13,4 +13,5 @@ def get_token(username=None, password=None):
         username = input('username: ')
     if not password:
         password = getpass('password: ')
-    print(Bothub.login(username, password))
+    user_token = Bothub.login(username, password)
+    print(f'Your user token is: {user_token}')
