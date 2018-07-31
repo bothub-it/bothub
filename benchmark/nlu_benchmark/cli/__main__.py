@@ -2,10 +2,12 @@ import sys
 import plac
 
 from .tools.bothub import get_token as bothub_get_token
+from .run import run
 
 
 commands = {
     'bothub_get_token': bothub_get_token,
+    'run': run,
 }
 
 @plac.annotations(

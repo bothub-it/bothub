@@ -1,0 +1,14 @@
+language: en
+train:
+    - text: "yes"
+      intent: "affirmative"
+    - text: "yeap"
+      intent: "affirmative"
+    - text: "okay"
+      intent: "affirmative"
+    - text: "no"
+      intent: "negative"
+    - text: "nop"
+      intent: "negative"
+    - text: "not"
+      intent: "negative"
