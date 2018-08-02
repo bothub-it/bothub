@@ -1,0 +1,1109 @@
+﻿{
+  "data": [
+    {
+      "text": "Qual time vai jogar hoje?",
+      "intent": "esporte",
+      "entities": []
+    },
+    {
+      "text": "Quem é o primeiro colocado na tabela?",
+      "intent": "esporte",
+      "entities": [
+        {
+          "entity": "ranking",
+          "start": 9,
+          "end": 26
+        }
+      ]
+    },
+    {
+      "text": "Quem venceu o campeonato do último ano?",
+      "intent": "esporte",
+      "entities": [
+        {
+          "entity": "competicao",
+          "start": 14,
+          "end": 24
+        },
+        {
+          "entity": "ranking",
+          "start": 5,
+          "end": 11
+        },
+        {
+          "entity": "data",
+          "start": 28,
+          "end": 38
+        }
+      ]
+    },
+    {
+      "text": "Quais os times estão competindo pelo primeiro lugar?",
+      "intent": "esporte",
+      "entities": [
+        {
+          "entity": "competicao",
+          "start": 21,
+          "end": 31
+        },
+        {
+          "entity": "ranking",
+          "start": 37,
+          "end": 51
+        }
+      ]
+    },
+    {
+      "text": "Com quantos pontos está o primeiro colocado?",
+      "intent": "esporte",
+      "entities": [
+        {
+          "entity": "ranking",
+          "start": 26,
+          "end": 43
+        }
+      ]
+    },
+    {
+      "text": "Quem está na lanterna depois dessa última rodada?",
+      "intent": "esporte",
+      "entities": []
+    },
+    {
+      "text": "Quais jogos irão ocorrer durante essa semana?",
+      "intent": "esporte",
+      "entities": [
+        {
+          "entity": "data",
+          "start": 33,
+          "end": 44
+        }
+      ]
+    },
+    {
+      "text": "Quem venceu a copa de 2002?",
+      "intent": "esporte",
+      "entities": [
+        {
+          "entity": "ranking",
+          "start": 5,
+          "end": 11
+        },
+        {
+          "entity": "competicao",
+          "start": 14,
+          "end": 18
+        },
+        {
+          "entity": "data",
+          "start": 22,
+          "end": 26
+        }
+      ]
+    },
+    {
+      "text": "Como está a tabela dessa temporada?",
+      "intent": "esporte",
+      "entities": []
+    },
+    {
+      "text": "Qual a escalação da seleção brasileira?",
+      "intent": "esporte",
+      "entities": [
+        {
+          "start": 20,
+          "end": 38,
+          "entity": "time"
+        }
+      ]
+    },
+    {
+      "text": "O que você me recomendaria para jantar hoje?",
+      "intent": "comida",
+      "entities": [
+        {
+          "start": 32,
+          "end": 38,
+          "entity": "refeicao"
+        }
+      ]
+    },
+    {
+      "text": "Onde fica o restaurante mais próximo?",
+      "intent": "comida",
+      "entities": [
+        {
+          "entity": "lugar",
+          "start": 12,
+          "end": 23
+        },
+        {
+          "entity": "lugar",
+          "start": 24,
+          "end": 36
+        },
+        {
+          "start": 12,
+          "end": 23,
+          "entity": "estabelecimento"
+        }
+      ]
+    },
+    {
+      "text": "O que tem mais calorias, suco de frutas ou cerveja?",
+      "intent": "comida",
+      "entities": [
+        {
+          "start": 25,
+          "end": 39,
+          "entity": "bebida"
+        },
+        {
+          "start": 43,
+          "end": 50,
+          "entity": "bebida"
+        }
+      ]
+    },
+    {
+      "text": "Onde eu posso comprar chocolate?",
+      "intent": "comida",
+      "entities": [
+        {
+          "start": 22,
+          "end": 31,
+          "entity": "tipo_comida"
+        }
+      ]
+    },
+    {
+      "text": "Comidas salgadas ou doces?",
+      "intent": "comida",
+      "entities": [
+        {
+          "start": 8,
+          "end": 16,
+          "entity": "sabor"
+        },
+        {
+          "start": 20,
+          "end": 25,
+          "entity": "sabor"
+        }
+      ]
+    },
+    {
+      "text": "Você gosta de culinária estrangeira?",
+      "intent": "comida",
+      "entities": [
+        {
+          "start": 14,
+          "end": 35,
+          "entity": "tipo_comida"
+        }
+      ]
+    },
+    {
+      "text": "Qual a sua preferida, junk food ou health food?",
+      "intent": "comida",
+      "entities": [
+        {
+          "start": 22,
+          "end": 31,
+          "entity": "tipo_comida"
+        },
+        {
+          "start": 35,
+          "end": 46,
+          "entity": "tipo_comida"
+        }
+      ]
+    },
+    {
+      "text": "Você prefere comer fora ou pedir delivery?",
+      "intent": "comida",
+      "entities": [
+        {
+          "start": 19,
+          "end": 23,
+          "entity": "lugar"
+        },
+        {
+          "start": 33,
+          "end": 41,
+          "entity": "tipo_comida"
+        }
+      ]
+    },
+    {
+      "text": "Sua carne deve ser bem passada ou mal passada?",
+      "intent": "comida",
+      "entities": [
+        {
+          "start": 4,
+          "end": 9,
+          "entity": "tipo_comida"
+        },
+        {
+          "start": 19,
+          "end": 30,
+          "entity": "tipo_comida"
+        },
+        {
+          "start": 34,
+          "end": 45,
+          "entity": "tipo_comida"
+        }
+      ]
+    },
+    {
+      "text": "Qual seria o seu café da manhã ideal?",
+      "intent": "comida",
+      "entities": [
+        {
+          "start": 17,
+          "end": 21,
+          "entity": "bebida"
+        },
+        {
+          "start": 25,
+          "end": 30,
+          "entity": "data"
+        }
+      ]
+    },
+    {
+      "text": "Qual é a melhor série de comédia já criada?",
+      "intent": "cinema",
+      "entities": [
+        {
+          "start": 25,
+          "end": 32,
+          "entity": "genero"
+        },
+        {
+          "start": 16,
+          "end": 21,
+          "entity": "tipo_de_programa"
+        }
+      ]
+    },
+    {
+      "text": "Que filmes irão estreiar esse ano?",
+      "intent": "cinema",
+      "entities": [
+        {
+          "start": 4,
+          "end": 10,
+          "entity": "tipo_de_programa"
+        },
+        {
+          "start": 25,
+          "end": 34,
+          "entity": "data"
+        }
+      ]
+    },
+    {
+      "text": "Quantos episódio tem breaking bad?",
+      "intent": "cinema",
+      "entities": [
+        {
+          "start": 21,
+          "end": 33,
+          "entity": "serie"
+        }
+      ]
+    },
+    {
+      "text": "Quais atores ganharam Oscar em 2017?",
+      "intent": "cinema",
+      "entities": [
+        {
+          "start": 22,
+          "end": 27,
+          "entity": "premiacao"
+        },
+        {
+          "start": 31,
+          "end": 35,
+          "entity": "data"
+        },
+        {
+          "start": 6,
+          "end": 12,
+          "entity": "profissao"
+        }
+      ]
+    },
+    {
+      "text": "Qual filme vendeu mais entradas de cinema na história?",
+      "intent": "cinema",
+      "entities": [
+        {
+          "start": 5,
+          "end": 10,
+          "entity": "tipo_de_programa"
+        },
+        {
+          "start": 11,
+          "end": 17,
+          "entity": "ranking"
+        }
+      ]
+    },
+    {
+      "text": "Que atores participaram de Titanic?",
+      "intent": "cinema",
+      "entities": [
+        {
+          "start": 27,
+          "end": 34,
+          "entity": "tipo_de_programa"
+        }
+      ]
+    },
+    {
+      "text": "Qual gênero de cinema você me recomendaria?",
+      "intent": "cinema",
+      "entities": []
+    },
+    {
+      "text": "Salas de cinema são um bom lugar para marcar encontros?",
+      "intent": "cinema",
+      "entities": [
+        {
+          "start": 0,
+          "end": 15,
+          "entity": "lugar"
+        }
+      ]
+    },
+    {
+      "text": "Os diretores de cinema de hollywood são famosos?",
+      "intent": "cinema",
+      "entities": [
+        {
+          "start": 26,
+          "end": 35,
+          "entity": "lugar"
+        },
+        {
+          "start": 3,
+          "end": 12,
+          "entity": "profissao"
+        }
+      ]
+    },
+    {
+      "text": "Qual é a nota de velozes e furiosos no imdb?",
+      "intent": "cinema",
+      "entities": [
+        {
+          "start": 17,
+          "end": 35,
+          "entity": "filme"
+        }
+      ]
+    },
+    {
+      "text": "Quantos estados tem o meu pais?",
+      "intent": "geografia",
+      "entities": [
+        {
+          "start": 26,
+          "end": 30,
+          "entity": "lugar"
+        },
+        {
+          "start": 8,
+          "end": 15,
+          "entity": "lugar"
+        }
+      ]
+    },
+    {
+      "text": "Qual o perímetro do Brasil?",
+      "intent": "geografia",
+      "entities": [
+        {
+          "start": 20,
+          "end": 26,
+          "entity": "pais"
+        }
+      ]
+    },
+    {
+      "text": "Quantos estados nós temos na região sul?",
+      "intent": "geografia",
+      "entities": [
+        {
+          "start": 8,
+          "end": 15,
+          "entity": "lugar"
+        }
+      ]
+    },
+    {
+      "text": "Quantos habitantes tem a capital do méxico?",
+      "intent": "geografia",
+      "entities": [
+        {
+          "start": 25,
+          "end": 32,
+          "entity": "lugar"
+        },
+        {
+          "start": 36,
+          "end": 42,
+          "entity": "pais"
+        }
+      ]
+    },
+    {
+      "text": "A que altitude fica média fica o equador?",
+      "intent": "geografia",
+      "entities": [
+        {
+          "start": 33,
+          "end": 40,
+          "entity": "lugar"
+        },
+        {
+          "start": 33,
+          "end": 40,
+          "entity": "pais"
+        }
+      ]
+    },
+    {
+      "text": "Qual é o clima predominante na Europa?",
+      "intent": "geografia",
+      "entities": [
+        {
+          "start": 31,
+          "end": 37,
+          "entity": "continente"
+        }
+      ]
+    },
+    {
+      "text": "Qual a distância da China ao Canadá?",
+      "intent": "geografia",
+      "entities": [
+        {
+          "start": 20,
+          "end": 25,
+          "entity": "pais"
+        },
+        {
+          "start": 29,
+          "end": 35,
+          "entity": "pais"
+        }
+      ]
+    },
+    {
+      "text": "Qual o índice de chuvas para abril?",
+      "intent": "geografia",
+      "entities": [
+        {
+          "start": 29,
+          "end": 34,
+          "entity": "data"
+        },
+        {
+          "start": 29,
+          "end": 34,
+          "entity": "mes"
+        },
+        {
+          "start": 17,
+          "end": 23,
+          "entity": "clima"
+        }
+      ]
+    },
+    {
+      "text": "Qual a chance de ocorrer trovões no deserto?",
+      "intent": "geografia",
+      "entities": [
+        {
+          "start": 36,
+          "end": 43,
+          "entity": "lugar"
+        },
+        {
+          "start": 25,
+          "end": 32,
+          "entity": "clima"
+        },
+        {
+          "start": 36,
+          "end": 43,
+          "entity": "clima"
+        }
+      ]
+    },
+    {
+      "text": "Qual o índice de natalidade do estado?",
+      "intent": "geografia",
+      "entities": [
+        {
+          "start": 31,
+          "end": 37,
+          "entity": "lugar"
+        }
+      ]
+    },
+    {
+      "text": "Estou com dor de cabeça, o que devo fazer?",
+      "intent": "saude",
+      "entities": [
+        {
+          "start": 17,
+          "end": 23,
+          "entity": "parte_do_corpo"
+        }
+      ]
+    },
+    {
+      "text": "Meu dente está doendo, qual pode ser o problema?",
+      "intent": "saude",
+      "entities": [
+        {
+          "start": 4,
+          "end": 9,
+          "entity": "parte_do_corpo"
+        }
+      ]
+    },
+    {
+      "text": "Qual é o melhor remédio para labirintite?",
+      "intent": "saude",
+      "entities": [
+        {
+          "start": 29,
+          "end": 40,
+          "entity": "patologia"
+        }
+      ]
+    },
+    {
+      "text": "Estou sentindo algumas tonturas, o que pode ser isso?",
+      "intent": "saude",
+      "entities": [
+        {
+          "start": 23,
+          "end": 31,
+          "entity": "patologia"
+        }
+      ]
+    },
+    {
+      "text": "Preciso de um antibiótico para minha faringite.",
+      "intent": "saude",
+      "entities": [
+        {
+          "start": 14,
+          "end": 25,
+          "entity": "remedio"
+        },
+        {
+          "start": 37,
+          "end": 46,
+          "entity": "patologia"
+        }
+      ]
+    },
+    {
+      "text": "Qual drogaria possui maior diversidade de produtos?",
+      "intent": "saude",
+      "entities": [
+        {
+          "start": 5,
+          "end": 13,
+          "entity": "estabelecimento"
+        }
+      ]
+    },
+    {
+      "text": "O que você me recomendaria para tratar minha dermatite?",
+      "intent": "saude",
+      "entities": [
+        {
+          "start": 45,
+          "end": 54,
+          "entity": "patologia"
+        }
+      ]
+    },
+    {
+      "text": "Você possui algum spray para massagem?",
+      "intent": "saude",
+      "entities": []
+    },
+    {
+      "text": "Meu médico me receitou um antialérgico, você poderia verificar o valor?",
+      "intent": "saude",
+      "entities": []
+    },
+    {
+      "text": "Me sinto constipado.",
+      "intent": "saude",
+      "entities": [
+        {
+          "start": 9,
+          "end": 19,
+          "entity": "patologia"
+        }
+      ]
+    },
+    {
+      "text": "Eu possuo algum boleto em aberto?",
+      "intent": "financeiro",
+      "entities": []
+    },
+    {
+      "text": "Quantas parcelas ainda estão em atraso?",
+      "intent": "financeiro",
+      "entities": []
+    },
+    {
+      "text": "Onde eu posso efetuar o pagamento?",
+      "intent": "financeiro",
+      "entities": []
+    },
+    {
+      "text": "Você poderia enviar o valor total para mim?",
+      "intent": "financeiro",
+      "entities": []
+    },
+    {
+      "text": "Qual a data de vencimento da parcela atual?",
+      "intent": "financeiro",
+      "entities": [
+        {
+          "start": 7,
+          "end": 25,
+          "entity": "data"
+        }
+      ]
+    },
+    {
+      "text": "Meu nome está no spc ou no serasa?",
+      "intent": "financeiro",
+      "entities": []
+    },
+    {
+      "text": "Quanto de juros eu estou pagando?",
+      "intent": "financeiro",
+      "entities": []
+    },
+    {
+      "text": "Existe desconto para pagamentos a vista?",
+      "intent": "financeiro",
+      "entities": []
+    },
+    {
+      "text": "Eu gostaria de negociar minha dívida",
+      "intent": "financeiro",
+      "entities": []
+    },
+    {
+      "text": "Evite cobranças, quite suas dívidas com antecedência",
+      "intent": "financeiro",
+      "entities": []
+    },
+    {
+      "text": "Quais os modelos vocês estão vendendo?",
+      "intent": "automoveis",
+      "entities": []
+    },
+    {
+      "text": "Tô afim de trocar o meu carro",
+      "intent": "automoveis",
+      "entities": [
+        {
+          "start": 24,
+          "end": 29,
+          "entity": "veiculo"
+        }
+      ]
+    },
+    {
+      "text": "Quero comprar o carro do ano",
+      "intent": "automoveis",
+      "entities": [
+        {
+          "start": 22,
+          "end": 28,
+          "entity": "data"
+        }
+      ]
+    },
+    {
+      "text": "Vocês têm Fiat?",
+      "intent": "automoveis",
+      "entities": [
+        {
+          "start": 10,
+          "end": 14,
+          "entity": "modelo_carro"
+        }
+      ]
+    },
+    {
+      "text": "Só compro carro se for da Citroen",
+      "intent": "automoveis",
+      "entities": [
+        {
+          "start": 26,
+          "end": 33,
+          "entity": "marca"
+        }
+      ]
+    },
+    {
+      "text": "Desejo comprar carro barato",
+      "intent": "automoveis",
+      "entities": []
+    },
+    {
+      "text": "Me interesso por Moto Honda",
+      "intent": "automoveis",
+      "entities": [
+        {
+          "start": 17,
+          "end": 21,
+          "entity": "veiculo"
+        },
+        {
+          "start": 22,
+          "end": 27,
+          "entity": "marca"
+        }
+      ]
+    },
+    {
+      "text": "Gostaria de uma indicação de automóvel",
+      "intent": "automoveis",
+      "entities": []
+    },
+    {
+      "text": "Posso alugar um Mustang?",
+      "intent": "automoveis",
+      "entities": [
+        {
+          "start": 16,
+          "end": 23,
+          "entity": "modelo_carro"
+        }
+      ]
+    },
+    {
+      "text": "Troco moto CB 600 amarela",
+      "intent": "automoveis",
+      "entities": [
+        {
+          "start": 11,
+          "end": 17,
+          "entity": "modelo_moto"
+        },
+        {
+          "start": 18,
+          "end": 25,
+          "entity": "cor"
+        }
+      ]
+    },
+    {
+      "text": "Qual o melhor candidato desse ano?",
+      "intent": "politica",
+      "entities": [
+        {
+          "start": 24,
+          "end": 33,
+          "entity": "data"
+        }
+      ]
+    },
+    {
+      "text": "Quero votar no candidato menos corrupto",
+      "intent": "politica",
+      "entities": []
+    },
+    {
+      "text": "Quais serão os candidatos a prefeito esse ano?",
+      "intent": "politica",
+      "entities": [
+        {
+          "start": 37,
+          "end": 45,
+          "entity": "data"
+        }
+      ]
+    },
+    {
+      "text": "Eu vou votar no presidente Peter",
+      "intent": "politica",
+      "entities": [
+        {
+          "start": 16,
+          "end": 26,
+          "entity": "cargo_politico"
+        }
+      ]
+    },
+    {
+      "text": "Quero votar no Péricles para presidente",
+      "intent": "politica",
+      "entities": []
+    },
+    {
+      "text": "Em quem votar esse ano para presidência?",
+      "intent": "politica",
+      "entities": [
+        {
+          "start": 28,
+          "end": 39,
+          "entity": "cargo_politico"
+        }
+      ]
+    },
+    {
+      "text": "Vou votar em branco",
+      "intent": "politica",
+      "entities": []
+    },
+    {
+      "text": "Meu voto esse ano será nulo",
+      "intent": "politica",
+      "entities": []
+    },
+    {
+      "text": "acho que votarei no 15",
+      "intent": "politica",
+      "entities": []
+    },
+    {
+      "text": "Duvidoso entre votar no 15 ou no 51",
+      "intent": "politica",
+      "entities": []
+    },
+    {
+      "text": "Gosto de jogos de ação",
+      "intent": "games",
+      "entities": []
+    },
+    {
+      "text": "Você joga Fortinite?",
+      "intent": "games",
+      "entities": [
+        {
+          "start": 10,
+          "end": 19,
+          "entity": "titulo_jogo"
+        }
+      ]
+    },
+    {
+      "text": "Meu estilo preferido de jogo é de MMORPG",
+      "intent": "games",
+      "entities": [
+        {
+          "start": 34,
+          "end": 40,
+          "entity": "tipo_jogo"
+        }
+      ]
+    },
+    {
+      "text": "Prefiro jogar Forza Horizon",
+      "intent": "games",
+      "entities": [
+        {
+          "start": 14,
+          "end": 27,
+          "entity": "titulo_jogo"
+        }
+      ]
+    },
+    {
+      "text": "Meu game favorito é o Watch Dogs",
+      "intent": "games",
+      "entities": [
+        {
+          "start": 22,
+          "end": 32,
+          "entity": "titulo_jogo"
+        }
+      ]
+    },
+    {
+      "text": "Prefiro jogos para celular",
+      "intent": "games",
+      "entities": [
+        {
+          "start": 8,
+          "end": 26,
+          "entity": "tipo_jogo"
+        }
+      ]
+    },
+    {
+      "text": "Game bom pra mim só no PC",
+      "intent": "games",
+      "entities": []
+    },
+    {
+      "text": "Tenho interesse nos jogos da Blizzard",
+      "intent": "games",
+      "entities": [
+        {
+          "start": 29,
+          "end": 37,
+          "entity": "marca"
+        }
+      ]
+    },
+    {
+      "text": "Já viu os Jogos da E3?",
+      "intent": "games",
+      "entities": [
+        {
+          "start": 19,
+          "end": 21,
+          "entity": "marca"
+        }
+      ]
+    },
+    {
+      "text": "Gosto mais de FPS do que de MOBA",
+      "intent": "games",
+      "entities": [
+        {
+          "start": 28,
+          "end": 32,
+          "entity": "tipo_jogo"
+        },
+        {
+          "start": 14,
+          "end": 17,
+          "entity": "tipo_jogo"
+        }
+      ]
+    },
+    {
+      "text": "O que fazer para acabar com pulgas e carrapatos?",
+      "intent": "pets",
+      "entities": [
+        {
+          "start": 28,
+          "end": 34,
+          "entity": "patologia"
+        },
+        {
+          "start": 37,
+          "end": 47,
+          "entity": "patologia"
+        },
+        {
+          "start": 28,
+          "end": 34,
+          "entity": "animal"
+        },
+        {
+          "start": 37,
+          "end": 47,
+          "entity": "animal"
+        }
+      ]
+    },
+    {
+      "text": "com que frequência devo dar banho no meu gato?",
+      "intent": "pets",
+      "entities": [
+        {
+          "start": 41,
+          "end": 45,
+          "entity": "animal"
+        }
+      ]
+    },
+    {
+      "text": "Como diminuir a queda de pelos?",
+      "intent": "pets",
+      "entities": [
+        {
+          "start": 16,
+          "end": 30,
+          "entity": "patologia"
+        }
+      ]
+    },
+    {
+      "text": "Onde eu posso castrar meu gato?",
+      "intent": "pets",
+      "entities": []
+    },
+    {
+      "text": "Qual a ração mais indicada para filhotes?",
+      "intent": "pets",
+      "entities": []
+    },
+    {
+      "text": "Obtive 6 filhotes na última ninhada",
+      "intent": "pets",
+      "entities": []
+    },
+    {
+      "text": "cães e gatos também tem gripe?",
+      "intent": "pets",
+      "entities": [
+        {
+          "start": 0,
+          "end": 4,
+          "entity": "animal"
+        },
+        {
+          "start": 24,
+          "end": 29,
+          "entity": "patologia"
+        }
+      ]
+    },
+    {
+      "text": "Qual o petshop mais confiável da cidade?",
+      "intent": "pets",
+      "entities": [
+        {
+          "start": 33,
+          "end": 39,
+          "entity": "lugar"
+        },
+        {
+          "start": 7,
+          "end": 14,
+          "entity": "estabelecimento"
+        }
+      ]
+    },
+    {
+      "text": "meus animais são muito agressivos",
+      "intent": "pets",
+      "entities": []
+    },
+    {
+      "text": "contratei um adestrador mais meus bichos",
+      "intent": "pets",
+      "entities": [
+        {
+          "start": 13,
+          "end": 23,
+          "entity": "profissao"
+        }
+      ]
+    }
+  ]
+}

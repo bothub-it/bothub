@@ -2,7 +2,7 @@ import argparse
 import traceback
 
 from app import bothub
-from app.bothub import save_on_bothub, analyze, analyze_text, train, create_new_repository, delete_repository
+from app.bothub import save_on_bothub, store_result, analyze_text, train, create_new_repository, delete_repository, write_csv_file
 from app.utils import load_json_file#,percentage
 
 parser = argparse.ArgumentParser(description='Train and Test the accuracy from Bothub')
@@ -13,6 +13,7 @@ sub_tasks = parser.add_subparsers(title='Tasks')
 def fill_bothub(args):
     expressions = load_json_file(args.filename)
     repository_data = create_new_repository(args)
+    print('Uploading examples...')
     for n, expression in enumerate(expressions['data']):
         entities = []
         if (len(expression['entities']) > 0):
@@ -24,22 +25,23 @@ def fill_bothub(args):
             print('Skipping expression {} due to an error'.format(expression))
     
     train_repository(args)
+    print('Generating report...')
     predict(args)
     delete_repository(args.ownernick, repository_data[1])
 
-# Add another argument that stores a description of the test
+
 task_fill_bothub = sub_tasks.add_parser('fill_bothub', help='Insert data from a source to Bothub')
 task_fill_bothub.add_argument('--repository', help='repository uuid destination on bothub')
 task_fill_bothub.add_argument('--ownernick', help='Owner nickname')
 task_fill_bothub.add_argument('--slug', help='Repository slug')
 task_fill_bothub.add_argument('--lang', help='language of the bot on Bothub')
-# task_fill_bothub.add_argument('--source', help='path to the source file, e.g. intents.json')
 task_fill_bothub.add_argument('--filename', help='name of the file that contains the phrases to be trained')
 task_fill_bothub.add_argument('--testfilename', help='name of the file that contains the phrases to be tested')
 task_fill_bothub.set_defaults(func=fill_bothub)
 
 
 def predict(args):
+    treated_predicts = []
     phrases_count = 0
     sum_bothub_hits = 0
     sum_bothub_fails = 0
@@ -47,26 +49,18 @@ def predict(args):
     for expression in expressions['data']:
         phrases_count += 1
         try:
-                bothub_result = bothub.analyze_text(expression['value'], args.lang, args.ownernick, args.slug)#.analyze(expression['value'], args.lang)
-                # print(bothub_result['answer']['intent']['name'])
+                bothub_result = bothub.analyze_text(expression['value'], args.lang, args.ownernick, args.slug)
+                treated_predicts.append(store_result(expression,bothub_result))
                 if bothub_result['answer']['intent']['name'] == expression['intent']:
                     sum_bothub_hits += 1
-                    print(expression['value']+' '+expression['intent']+' - OK') #+bothub_result['answer']['intent']['confidence']
                 else:
                     sum_bothub_fails += 1
-                    print(expression['value']+' '+expression['intent']+' - FAILURE')
         except KeyError:
             traceback.print_exc()
             print('Skipping expression {} due to an error'.format(expression))
-
-    print('============================ RESULT ================================')
     # bothub_accuracy = percentage(sum_bothub_hits, count)
     # bothub_confidence_avg = sum_bothub_confidence/count
-
-    print('Bothub:')
-    print('Analized phrases: {}'.format(phrases_count))
-    print('Correct predictions: {}'.format(sum_bothub_hits))
-    print('Wrong predictions: {}'.format(sum_bothub_fails))
+    write_csv_file(treated_predicts,'Analized phrases: {0}\nCorrect predictions: {1}\nWrong predictions: {2}'.format(phrases_count,sum_bothub_hits,sum_bothub_fails))
     # print('Final Accuracy: {}'.format(bothub_accuracy))
     # print('Average Confidence: {}%'.format(bothub_confidence_avg))
 
@@ -85,10 +79,7 @@ task_train.add_argument('--ownernick', help='Owner nickname')
 task_train.set_defaults(func=remove_repository)
 
 
-
 task_predict = sub_tasks.add_parser('predict', help='Predict from Bothub and check accuracy')
-# task_predict.add_argument('--authorization-bothub', help='authorization token from dataset on Bothub')
-# task_predict.add_argument('--source', help='path to the source file, e.g. intents.json')
 task_predict.add_argument('--testfilename', help='name of the source file')
 task_predict.add_argument('--intent', help='name of the entity that represents the intents')
 task_predict.add_argument('--lang', help='language of the bot on Bothub')

@@ -1,8 +1,8 @@
 import os
-
 import requests
 
 from app.utils import load_json_file
+from app.settings import WIT_APP_URL, WIT_TOKEN
 
 
 def get_expressions_data(source):
@@ -34,7 +34,8 @@ def get_intent_from_input(intent, file_item):
 
 
 def analyze(text, token):
-    params = {'q': text}
-    headers = {'Authorization': token}
-    response = requests.get('https://api.wit.ai/message', params=params, headers=headers)
-    return response.json()
+    params = {'q':text}
+    headers = {'Authorization':WIT_TOKEN}
+    response = requests.get(WIT_APP_URL, params=params, headers=headers)
+    response_json = json.loads(response.content)
+    return response_json
