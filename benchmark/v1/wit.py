@@ -33,6 +33,23 @@ def get_intent_from_input(intent, file_item):
     return None
 
 
+def read_wit_and_push_bothub(expression):
+    text = expression['text']
+    wit_entities = expression['entities']
+    filtered_entities = []
+    intent = ''
+    for entity in wit_entities:
+        if entity['entity'] == 'intent':
+            intent = entity['value'].strip('\"')
+        else:
+            new_entity = {}
+            new_entity['entity'] = entity['entity']
+            new_entity['start'] = entity['start']
+            new_entity['end'] = entity['end']
+            filtered_entities.append(new_entity)
+    return [text, filtered_entities, intent]
+
+
 def analyze(text, token):
     params = {'q':text}
     headers = {'Authorization':WIT_TOKEN}

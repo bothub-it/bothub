@@ -35,7 +35,6 @@ def delete_repository(owner_nickname, repository_slug):
 def save_on_bothub(args, text, entities, intent):
     data = {'repository': args, 'text': text, 'entities': entities, 'intent': intent}
     response = requests.post('{0}/api/example/new/'.format(BOTHUB_APP_URL), headers=user_token_header, json=json.loads(json.dumps(data)))
-    # print(response)
 
     
 def analyze_text(text, language, owner_nickname, repository_slug):
@@ -68,7 +67,7 @@ def train(owner_nickname, repository_slug):
 
 def write_csv_file(data, csv_footer):
     csv_headers = "Phrases,Expected intents,Bothub predicts,Confidence,Result\n"
-    with open('output1.csv', "w") as csv_file:
+    with open('output.csv', "w") as csv_file:
         csv_file.write(csv_headers)
         for line in data:
             csv_file.write(line)
