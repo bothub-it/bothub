@@ -4,7 +4,7 @@ import traceback
 from app import bothub
 from app import wit
 from app.bothub import save_on_bothub, store_result, analyze_text, train, create_new_repository, delete_repository, write_csv_file
-from app.wit import read_wit_and_push_bothub
+from app.wit import read_wit_and_push_bothub, analyze, store_wit_result, write_csv_file_from_wit
 from app.utils import load_json_file#,percentage
 
 parser = argparse.ArgumentParser(description='Train and Test the accuracy from Bothub')
@@ -29,13 +29,14 @@ def fill_bothub(args):
     else:
         for expression in expressions['data']:
             entities = []
-            if (len(read_wit_and_push_bothub(expression)[1])):
+            if (len(read_wit_and_push_bothub(expression)[1]) > 0):
                 entities = read_wit_and_push_bothub(expression)[1]
             save_on_bothub(repository_data[0],read_wit_and_push_bothub(expression)[0],entities,read_wit_and_push_bothub(expression)[2])
 
     train_repository(args)
     print('Generating report...')
     predict(args)
+    predict_on_wit(args)
     delete_repository(args.ownernick, repository_data[1])
 
 
@@ -79,14 +80,34 @@ def predict(args):
         except KeyError:
             traceback.print_exc()
             print('Skipping expression {} due to an error'.format(expression))
-    # bothub_accuracy = percentage(sum_bothub_hits, count)
-    # bothub_confidence_avg = sum_bothub_confidence/count
-    write_csv_file(treated_predicts,'Analized phrases: {0}\nCorrect predictions: {1}\nWrong predictions: {2}'.format(phrases_count,sum_bothub_hits,sum_bothub_fails))
-    # print('Final Accuracy: {}'.format(bothub_accuracy))
-    # print('Average Confidence: {}%'.format(bothub_confidence_avg))
+    write_csv_file(treated_predicts,'Analized phrases: {0}\nSuccess average: {1}%\nWrong predictions: {2}'.format(phrases_count,int((sum_bothub_hits/phrases_count)*100),sum_bothub_fails))
 
+
+def predict_on_wit(args):
+    treated_predicts = []
+    phrases_count = 0
+    sum_wit_hits = 0
+    sum_wit_fails = 0
+    expressions = load_json_file(args.testfilename)
+    for expression in expressions['data']:
+        phrases_count += 1
+        try:
+                wit_result = wit.analyze(expression['value'])
+                if 'intent' in wit_result['entities']:
+                    if wit_result['entities']['intent'][0]['value'] == expression['intent']:
+                        sum_wit_hits += 1
+                    else:
+                        sum_wit_fails += 1
+                else:
+                    sum_wit_fails += 1
+                treated_predicts.append(store_wit_result(expression, wit_result))
+        except KeyError:
+            traceback.print_exc()
+            print('Skipping expression {} due to an error'.format(expression))
+    write_csv_file_from_wit(treated_predicts,'Analized phrases: {0}\nSuccess average: {1}%\nWrong predictions: {2}'.format(phrases_count,int((sum_wit_hits/phrases_count)*100),sum_wit_fails))
 def open_repository(args):
     create_new_repository(args)
+
 
 task_predict = sub_tasks.add_parser('open_repository', help='Predict from Bothub and check accuracy')
 task_predict.set_defaults(func=open_repository)
