@@ -12,8 +12,10 @@ from ..services.bothub import Bothub
 @plac.annotations(
     data_file_path=plac.Annotation(),
     data_file_type=plac.Annotation(kind='option', choices=['yaml', 'json']),
-    bothub_user_token=plac.Annotation(kind='option'))
-def run(data_file_path, data_file_type='yaml', bothub_user_token=None):
+    bothub_user_token=plac.Annotation(kind='option'),
+    type_tests=plac.Annotation(kind='flag', abbrev='T'))
+def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
+        type_tests=False):
     try:
         data_file = open(data_file_path, 'r')
     except Exception as e:
@@ -65,9 +67,10 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None):
             for example in train:
                 example_submit_response = bothub.submit_example(
                     temporary_repository.get('uuid'),
-                    example)
+                    example,
+                    data.get('language'))
+                logger.debug(f'example trained {example_submit_response.text}')
                 example_submit_response.raise_for_status()
-                logger.debug(f'example trained {example_submit_response.json()}')
                 pbar.update(1)
         logger.info('Examples submitted!')
 
@@ -75,9 +78,36 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None):
         train_response = bothub.train(
             temporary_repository.get('owner__nickname'),
             temporary_repository.get('slug'))
+        logger.debug(f'repository train response {train_response.text}')
         train_response.raise_for_status()
-        logger.debug(f'repository train response {train_response.json()}')
         logger.info('Repository trained')
+
+        ## Test
+        if type_tests:
+            logger.warning('Typing mode ON, press CTRL + C to exit')
+            try:
+                while True:
+                    text = input('Type a text to test: ')
+                    analyze_response = bothub.analyze(
+                        temporary_repository.get('owner__nickname'),
+                        temporary_repository.get('slug'),
+                        text,
+                        data.get('language'))
+
+                    logger.debug(f'analyze response {analyze_response.text}')
+                    analyze_response.raise_for_status()
+                    analyze_json = analyze_response.json()
+                    analyze_answer = analyze_json.get('answer')
+                    analyze_intent = analyze_answer.get('intent')
+                    logger.info('Bothub return:')
+                    logger.info(f' - intent: {analyze_intent.get("name", "[not detected]")} ' +
+                                f'({analyze_intent.get("confidence", 0) * 100}%)')
+            except KeyboardInterrupt as e:
+                logger.info('Tests finished!')
+        else:
+            pass  # TODO: load from data file
+    except requests.exceptions.HTTPError as e:
+        raise e
     except Exception as e:
         raise e
     finally:

@@ -118,3 +118,13 @@ class Bothub(Service):
         return Bothub.api_request(
             f'repository/{owner_nickname}/{slug}/train',
             user_token=self.user_token)
+
+    def analyze(self, owner_nickname, slug, text, language):
+        data = {
+            'text': text,
+            'language': language,
+        }
+        return Bothub.api_request(
+            f'repository/{owner_nickname}/{slug}/analyze',
+            data,
+            user_token=self.user_token)
