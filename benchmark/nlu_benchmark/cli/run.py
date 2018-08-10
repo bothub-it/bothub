@@ -3,6 +3,8 @@ import yaml
 import json
 import requests
 
+from tqdm import tqdm
+
 from . import logger
 from ..services.bothub import Bothub
 
@@ -37,6 +39,8 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None):
     logger.info('Starting Bothub benchmark...')
     bothub = Bothub(user_token=bothub_user_token)
 
+    ## Create a temporary repository
+
     create_repository_response = bothub.create_temporary_repository(
         data.get('language'))
 
@@ -50,14 +54,43 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None):
     temporary_repository = create_repository_response.json()
     logger.info(f'Bothub temporary repository created "{temporary_repository.get("name")}"')
 
-    delete_repository_response = bothub.delete_repository(
-        temporary_repository.get('owner__nickname'),
-        temporary_repository.get('slug'))
 
     try:
-        delete_repository_response.raise_for_status()
-    except Exception as e:
-        logger.warning('Bothub temporary repository not deleted, manually delete')
-        logger.debug(delete_repository_response.text)
+        ## Train
 
-    logger.info(f'Bothub temporary repository deleted')
+        train = data.get('train')
+        total_train = len(train)
+        logger.info(f'{total_train} examples to train in Bothub')
+        with tqdm(total=total_train, unit='examples') as pbar:
+            for example in train:
+                example_submit_response = bothub.submit_example(
+                    temporary_repository.get('uuid'),
+                    example)
+                example_submit_response.raise_for_status()
+                logger.debug(f'example trained {example_submit_response.json()}')
+                pbar.update(1)
+        logger.info('Examples submitted!')
+
+        logger.info('Training...')
+        train_response = bothub.train(
+            temporary_repository.get('owner__nickname'),
+            temporary_repository.get('slug'))
+        train_response.raise_for_status()
+        logger.debug(f'repository train response {train_response.json()}')
+        logger.info('Repository trained')
+    except Exception as e:
+        raise e
+    finally:
+        ## Delete a temporary repository
+
+        delete_repository_response = bothub.delete_repository(
+            temporary_repository.get('owner__nickname'),
+            temporary_repository.get('slug'))
+
+        try:
+            delete_repository_response.raise_for_status()
+        except Exception as e:
+            logger.warning('Bothub temporary repository not deleted, manually delete')
+            logger.debug(delete_repository_response.text)
+
+        logger.info(f'Bothub temporary repository deleted')

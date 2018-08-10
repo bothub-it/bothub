@@ -101,4 +101,20 @@ class Bothub(Service):
     def delete_repository(self, owner_nickname, repository_slug):
         return Bothub.api_request(
             f'repository/{owner_nickname}/{repository_slug}',
-            replace_method='DELETE')
+            replace_method='DELETE',
+            user_token=self.user_token)
+
+    def submit_example(self, repository_uuid, example, language=None):
+        data = example
+        data.update({'repository': repository_uuid})
+        if language:
+            data.update({'language': language})
+        return Bothub.api_request(
+            'example/new',
+            data,
+            user_token=self.user_token)
+
+    def train(self, owner_nickname, slug):
+        return Bothub.api_request(
+            f'repository/{owner_nickname}/{slug}/train',
+            user_token=self.user_token)
