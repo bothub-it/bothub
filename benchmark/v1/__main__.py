@@ -28,9 +28,10 @@ def fill_bothub(args):
     else:
         for expression in expressions['data']:
             entities = []
-            if (len(read_wit_and_push_bothub(expression)[1]) > 0):
-                entities = read_wit_and_push_bothub(expression)[1]
-            save_on_bothub(repository_data[0],read_wit_and_push_bothub(expression)[0],entities,read_wit_and_push_bothub(expression)[2])
+            if 'entities' in expression:
+                if (len(read_wit_and_push_bothub(expression)[1]) > 0):
+                    entities = read_wit_and_push_bothub(expression)[1]
+                save_on_bothub(repository_data[0],read_wit_and_push_bothub(expression)[0],entities,read_wit_and_push_bothub(expression)[2])
 
     train_repository(args)
     print('Generating report...')
