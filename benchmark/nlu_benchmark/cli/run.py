@@ -83,29 +83,43 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
         logger.info('Repository trained')
 
         ## Test
+
+        test_result = []
+
+        def analyze_wrapper(text, expected={}):
+            analyze_response = bothub.analyze(
+                temporary_repository.get('owner__nickname'),
+                temporary_repository.get('slug'),
+                text,
+                data.get('language'))
+            logger.debug(f'analyze response {analyze_response.text}')
+            analyze_response.raise_for_status()
+            analyze = analyze_response.json()
+            analyze_answer = analyze.get('answer')
+            analyze_intent = analyze_answer.get('intent')
+            logger.info('Bothub return:')
+            logger.info(f' - intent: {analyze_intent.get("name", "[not detected]")} ' +
+                        f'({analyze_intent.get("confidence", 0) * 100}%)')
+            test_result.append({
+                'text': text,
+                'intent': analyze_intent,
+                'expected': expected,
+                'response': analyze,
+            })
+
         if type_tests:
             logger.warning('Typing mode ON, press CTRL + C to exit')
             try:
                 while True:
                     text = input('Type a text to test: ')
-                    analyze_response = bothub.analyze(
-                        temporary_repository.get('owner__nickname'),
-                        temporary_repository.get('slug'),
-                        text,
-                        data.get('language'))
-
-                    logger.debug(f'analyze response {analyze_response.text}')
-                    analyze_response.raise_for_status()
-                    analyze_json = analyze_response.json()
-                    analyze_answer = analyze_json.get('answer')
-                    analyze_intent = analyze_answer.get('intent')
-                    logger.info('Bothub return:')
-                    logger.info(f' - intent: {analyze_intent.get("name", "[not detected]")} ' +
-                                f'({analyze_intent.get("confidence", 0) * 100}%)')
+                    analyze_wrapper(text)
             except KeyboardInterrupt as e:
                 logger.info('Tests finished!')
         else:
-            pass  # TODO: load from data file
+            for test in data.get('tests'):
+                analyze_wrapper(test.get('text'), test.get('expected'))
+
+        logger.debug(f'test_result: {test_result}')
     except requests.exceptions.HTTPError as e:
         raise e
     except Exception as e:

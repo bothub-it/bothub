@@ -20,3 +20,13 @@ train:
       intent: "maybe"
     - text: "maybe no"
       intent: "maybe"
+tests:
+    - text: "yes"
+      expected:
+        - intent: "affirmative"
+    - text: "no"
+      expected:
+        - intent: "negative"
+    - text: "maybe"
+      expected:
+        - intent: "maybe"
