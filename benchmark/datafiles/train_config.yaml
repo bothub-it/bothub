@@ -1,0 +1,7 @@
+language: pt_br
+train:
+  - file: /Users/periclesjr/Documents/Benchmark/bothub/benchmark/datafiles/Benchmark_Training.zip
+  - exported_from: witai
+  - filetype: zip
+test:
+  - file: source

@@ -1,5 +1,6 @@
 import random
 import string
+import json
 
 from requests import Request, Session
 
@@ -18,10 +19,12 @@ class Bothub(Service):
         method = 'POST' if data else 'GET'
         if replace_method:
             method = replace_method
+        if data:
+            headers.update({ 'Content-Type': 'application/json' })
         request = Request(
             method,
             f'https://bothub.it/api/{path}/',
-            data=data,
+            data=json.dumps(data),
             headers=headers)
         prepped = request.prepare()
         return session.send(prepped)
@@ -93,7 +96,7 @@ class Bothub(Service):
             'name': f'Temporary repository {repository_slug}',
             'slug': repository_slug,
             'language': language,
-            'categories': map(lambda c: c.get('id'), categories[:1]),
+            'categories': list(map(lambda c: c.get('id'), categories[:1])),
             'description': 'This is a temporary repository to benchmark test.',
             'private': True,
         })
@@ -109,10 +112,11 @@ class Bothub(Service):
         data.update({'repository': repository_uuid})
         if language:
             data.update({'language': language})
-        return Bothub.api_request(
-            'example/new',
-            data,
-            user_token=self.user_token)
+        return Bothub.api_request('example/new', data, user_token=self.user_token)
+
+    def submit_from_wit_format(self, repository_uuid, example, language=None):
+        data = {'repository': repository_uuid, 'text': example[0], 'entities': example[1], 'intent': example[2]}
+        return Bothub.api_request('example/new', data, user_token=self.user_token)
 
     def train(self, owner_nickname, slug):
         return Bothub.api_request(

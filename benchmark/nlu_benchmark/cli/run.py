@@ -2,12 +2,12 @@ import plac
 import yaml
 import json
 import requests
+import zipfile
 
 from tqdm import tqdm
 
 from . import logger
 from ..services.bothub import Bothub
-
 
 @plac.annotations(
     data_file_path=plac.Annotation(),
@@ -43,8 +43,7 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
 
     ## Create a temporary repository
 
-    create_repository_response = bothub.create_temporary_repository(
-        data.get('language'))
+    create_repository_response = bothub.create_temporary_repository(data.get('language'))
 
     try:
         create_repository_response.raise_for_status()
@@ -59,28 +58,45 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
 
     try:
         ## Train
-
         train = data.get('train')
-        total_train = len(train)
-        logger.info(f'{total_train} examples to train in Bothub')
-        with tqdm(total=total_train, unit='examples') as pbar:
-            for example in train:
-                example_submit_response = bothub.submit_example(
-                    temporary_repository.get('uuid'),
-                    example,
-                    data.get('language'))
+        if train[2].get('filetype') != 'zip':
+            total_train = len(train)
+            logger.info(f'{total_train} examples to train in Bothub')
+            with tqdm(total=total_train, unit='examples') as pbar:
+                for example in train:
+                    example_submit_response = bothub.submit_example(temporary_repository.get('uuid'), example, data.get('language'))
+                    logger.debug(f'example trained {example_submit_response.text}')
+                    example_submit_response.raise_for_status()
+                    pbar.update(1)
+            logger.info('Examples submitted!')
+        else:
+            with zipfile.ZipFile(data.get('train')[0].get('file'),'r') as training_file:
+                with training_file.open('Benchmark_Training/expressions.json') as json_file:
+                    data = json.loads(json_file.read().decode('utf-8'))
+            for expression in data['data']:
+                text = expression['text']
+                wit_entities = expression['entities']
+                filtered_entities = []
+                intent = ''
+                for entity in wit_entities:
+                    if entity['entity'] == 'intent':
+                        intent = entity['value'].strip('\"').lower()
+                    else:
+                        new_entity = {}
+                        new_entity['entity'] = entity['entity']
+                        new_entity['start'] = entity['start']
+                        new_entity['end'] = entity['end']
+                        filtered_entities.append(new_entity)
+                example_submit_response = bothub.submit_from_wit_format(temporary_repository.get('uuid'),[text,filtered_entities,intent])
                 logger.debug(f'example trained {example_submit_response.text}')
                 example_submit_response.raise_for_status()
-                pbar.update(1)
-        logger.info('Examples submitted!')
-
+            logger.info('Examples submitted!')
+                
         logger.info('Training...')
-        train_response = bothub.train(
-            temporary_repository.get('owner__nickname'),
-            temporary_repository.get('slug'))
+        train_response = bothub.train(temporary_repository.get('owner__nickname'), temporary_repository.get('slug'))
         logger.debug(f'repository train response {train_response.text}')
         train_response.raise_for_status()
-        logger.info('Repository trained')
+        logger.info('Repository trained')    
 
         ## Test
         if type_tests:
