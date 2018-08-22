@@ -72,8 +72,8 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
         else:
             with zipfile.ZipFile(data.get('train')[0].get('file'),'r') as training_file:
                 with training_file.open('Benchmark_Training/expressions.json') as json_file:
-                    data = json.loads(json_file.read().decode('utf-8'))
-            for expression in data['data']:
+                    training_data = json.loads(json_file.read().decode('utf-8'))
+            for expression in training_data['data']:
                 text = expression['text']
                 wit_entities = expression['entities']
                 filtered_entities = []
@@ -101,7 +101,7 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
         ## Test
 
         test_result = []
-
+        result_intent_test = ''
         def analyze_wrapper(text, expected={}):
             analyze_response = bothub.analyze(
                 temporary_repository.get('owner__nickname'),
@@ -113,14 +113,20 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
             analyze = analyze_response.json()
             analyze_answer = analyze.get('answer')
             analyze_intent = analyze_answer.get('intent')
+            result_intent_test = []
+            if expected[0].get('intent') == analyze_intent.get('name'):
+                result_intent_test = 'OK'
+            else:
+                result_intent_test = 'FAILURE'                
             logger.info('Bothub return:')
             logger.info(f' - intent: {analyze_intent.get("name", "[not detected]")} ' +
                         f'({analyze_intent.get("confidence", 0) * 100}%)')
             test_result.append({
                 'text': text,
                 'intent': analyze_intent,
+                'entities': analyze_answer.get('entities'),
                 'expected': expected,
-                'response': analyze,
+                'result': result_intent_test
             })
 
         if type_tests:
@@ -130,7 +136,7 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
                     text = input('Type a text to test: ')
                     analyze_wrapper(text)
             except KeyboardInterrupt as e:
-                logger.info('Tests finished!')
+                logger.info('Test finished!')
         else:
             for test in data.get('tests'):
                 analyze_wrapper(test.get('text'), test.get('expected'))
@@ -141,6 +147,7 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
     except Exception as e:
         raise e
     finally:
+        print(test_result)
         ## Delete a temporary repository
 
         delete_repository_response = bothub.delete_repository(
