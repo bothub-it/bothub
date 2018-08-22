@@ -39,12 +39,34 @@ def analyze_text(text, language, owner_nickname, repository_slug):
 
 def store_result(expression, bothub_result):
     detected_entities = '-'
+    known_entities = '-'
+    bothub_entities_count = 0
+    known_entities_count = 0
+    matched_entities = 0
+    entity_result = ''
+    entities_percentage = 0
+    for each_known_entity in expression['entities']:
+            known_entities_count += 1
+            known_entities += '{0}("{1}")-'.format(each_known_entity['entity'],each_known_entity['value'])
     for entity in bothub_result['answer']['entities']:
-        detected_entities += '{}-'.format(entity['entity'])
-    if bothub_result['answer']['intent']['name'] == expression['intent']:
-        return '{0},{1},{2},{3}%,OK,{4}'.format(expression['value'], expression['intent'], bothub_result['answer']['intent']['name'],int(float(bothub_result['answer']['intent']['confidence'])*100),detected_entities)        
+        bothub_entities_count += 1
+        detected_entities += '{0}("{1}")-'.format(entity['entity'],entity['value'])
+        for each_known_entity in expression['entities']:
+            if entity['entity'] == each_known_entity['entity']:
+                matched_entities += 1
+    if bothub_entities_count == known_entities_count == matched_entities:
+        entity_result = 'OK'
+        entities_percentage = 100
+    elif bothub_entities_count != known_entities_count and matched_entities > 0:
+        entities_percentage = (bothub_entities_count/known_entities_count)*100
+        entity_result = 'PARCIAL'
     else:
-        return '{0},{1},{2},{3}%,FAILURE,{4}'.format(expression['value'], expression['intent'], bothub_result['answer']['intent']['name'],int(float(bothub_result['answer']['intent']['confidence'])*100),detected_entities)
+        entities_percentage = 0
+        entity_result = 'FAILURE'
+    if bothub_result['answer']['intent']['name'] == expression['intent']:
+        return '{0},{1},{2},{3}%,OK,{4},{5},{6},{7}%'.format(expression['text'], expression['intent'], bothub_result['answer']['intent']['name'],int(float(bothub_result['answer']['intent']['confidence'])*100),detected_entities,known_entities,entity_result,entities_percentage)
+    else:
+        return '{0},{1},{2},{3}%,FAILURE,{4},{5},{6},{7}%'.format(expression['text'], expression['intent'], bothub_result['answer']['intent']['name'],int(float(bothub_result['answer']['intent']['confidence'])*100),detected_entities,known_entities,entity_result,entities_percentage)
 
 
 def train(owner_nickname, repository_slug):
@@ -54,7 +76,7 @@ def train(owner_nickname, repository_slug):
 
 
 def write_csv_file(data, csv_footer):
-    csv_headers = "Phrases,Expected intents,Bothub predicts,Confidence,Result,Detected entities\n"
+    csv_headers = "Phrases,Expected intents,Bothub predicts,Confidence accuracy,Result by Intent,Detected entities,Known entities,Result by Entity, Entity accuracy\n"
     with open('Bothub_output.csv', "w") as csv_file:
         csv_file.write(csv_headers)
         for line in data:

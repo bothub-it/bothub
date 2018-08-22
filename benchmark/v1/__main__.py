@@ -5,8 +5,7 @@ from app import bothub
 from app import wit
 from app.bothub import save_on_bothub, store_result, analyze_text, train, create_new_repository, delete_repository, write_csv_file
 from app.wit import read_wit_and_push_bothub, analyze, store_wit_result, write_csv_file_from_wit
-from app.utils import load_json_file#,percentage
-
+from app.utils import load_json_file
 parser = argparse.ArgumentParser(description='Train and Test the accuracy from Bothub')
 
 sub_tasks = parser.add_subparsers(title='Tasks')
@@ -29,9 +28,10 @@ def fill_bothub(args):
     else:
         for expression in expressions['data']:
             entities = []
-            if (len(read_wit_and_push_bothub(expression)[1]) > 0):
-                entities = read_wit_and_push_bothub(expression)[1]
-            save_on_bothub(repository_data[0],read_wit_and_push_bothub(expression)[0],entities,read_wit_and_push_bothub(expression)[2])
+            if 'entities' in expression:
+                if (len(read_wit_and_push_bothub(expression)[1]) > 0):
+                    entities = read_wit_and_push_bothub(expression)[1]
+                save_on_bothub(repository_data[0],read_wit_and_push_bothub(expression)[0],entities,read_wit_and_push_bothub(expression)[2])
 
     train_repository(args)
     print('Generating report...')
@@ -71,7 +71,7 @@ def predict(args):
     for expression in expressions['data']:
         phrases_count += 1
         try:
-                bothub_result = bothub.analyze_text(expression['value'], args.lang, args.ownernick, args.slug)
+                bothub_result = bothub.analyze_text(expression['text'], args.lang, args.ownernick, args.slug)
                 treated_predicts.append(store_result(expression,bothub_result))
                 if bothub_result['answer']['intent']['name'] == expression['intent']:
                     sum_bothub_hits += 1
@@ -92,7 +92,7 @@ def predict_on_wit(args):
     for expression in expressions['data']:
         phrases_count += 1
         try:
-                wit_result = wit.analyze(expression['value'])
+                wit_result = wit.analyze(expression['text'])
                 if 'intent' in wit_result['entities']:
                     if wit_result['entities']['intent'][0]['value'] == expression['intent']:
                         sum_wit_hits += 1

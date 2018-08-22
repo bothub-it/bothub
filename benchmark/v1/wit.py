@@ -60,20 +60,44 @@ def analyze(text):
 def store_wit_result(expression, wit_result):
     prediction_result = 'OK'
     detected_entities = '-'
+    known_entities = '-'
+    wit_entities_count = 0
+    known_entities_count = 0
+    matched_entities = 0
+    entity_result = ''
+    entities_percentage = 0
+    for known_entity in expression['entities']:
+        known_entities_count += 1
+        known_entities += '{0}("{1}")-'.format(known_entity['entity'],known_entity['value'])
+    
+    for key in wit_result['entities']:
+        if key != 'intent':
+            wit_entities_count += 1
+            detected_entities += '{0}("{1}")-'.format(key,(wit_result['entities']).get(key)[0]['value'])
+            for entity in expression['entities']:
+                if key == entity['entity']:
+                    matched_entities += 1
+    if wit_entities_count == known_entities_count == matched_entities:
+        entity_result = 'OK'
+        entities_percentage = 100
+    elif wit_entities_count != known_entities_count and matched_entities > 0:
+        entities_percentage = (wit_entities_count/known_entities_count)*100
+        entity_result = 'PARCIAL'
+    else:
+        entities_percentage = 0
+        entity_result = 'FAILURE'
+    
     if 'intent' in wit_result['entities']:
         if wit_result['entities']['intent'][0]['value'] != expression['intent']:
-            prediction_result = 'FAILURE'
-            for key in wit_result['entities']:
-                if key != 'intent':
-                    detected_entities += '{}-'.format(key)
-        return '{0},{1},{2},{3}%,{4},{5}'.format(expression['value'], expression['intent'], wit_result['entities']['intent'][0]['value'],int(float(wit_result['entities']['intent'][0]['confidence'])*100),prediction_result,detected_entities)
+            prediction_result = 'FAILURE'                         
+        return '{0},{1},{2},{3}%,{4},{5},{6},{7}%'.format(expression['text'], expression['intent'], wit_result['entities']['intent'][0]['value'],int(float(wit_result['entities']['intent'][0]['confidence'])*100),prediction_result,detected_entities,known_entities,entity_result,entities_percentage)
     else:
         prediction_result = 'FAILURE'
-        return '{0},{1},,,{2},'.format(expression['value'], expression['intent'],prediction_result)
+        return '{0},{1},,,{2},,{3},{4},{5}%'.format(expression['text'], expression['intent'],prediction_result,known_entities, entity_result,entities_percentage)
 
 
 def write_csv_file_from_wit(data, csv_footer):
-    csv_headers = "Phrases,Expected intents,wit predicts,Confidence,Result,Detected entities\n"
+    csv_headers = "Phrases,Expected intents,wit predicts,Confidence accuracy,Result,Detected entities,Known entities,Result by Entity, Entity accuracy\n"
     with open('wit_output.csv', "w") as csv_file:
         csv_file.write(csv_headers)
         for line in data:
