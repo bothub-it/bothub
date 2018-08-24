@@ -1,7 +1,9 @@
 language: pt_br
 train:
-  - file: /Users/periclesjr/Documents/Benchmark/bothub/benchmark/datafiles/Benchmark_Training.zip
-  - exported_from: witai
+  - filepath: /Users/periclesjr/Documents/Benchmark/bothub/benchmark/datafiles/Benchmark_Training.zip
+  - filename: 'Benchmark_Training'
+  - wit_token: 'Bearer OWL5XSVZVJNJS4BAVLVXV6STDU7SMPUF'
+  - wit_version: 20180808
   - filetype: zip
 tests:
   - text: O Real Madrid jogará hoje?

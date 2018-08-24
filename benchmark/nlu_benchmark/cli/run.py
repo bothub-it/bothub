@@ -8,6 +8,7 @@ from tqdm import tqdm
 
 from . import logger
 from ..services.bothub import Bothub
+from ..services.wit import Wit
 
 @plac.annotations(
     data_file_path=plac.Annotation(),
@@ -40,6 +41,7 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
 
     logger.info('Starting Bothub benchmark...')
     bothub = Bothub(user_token=bothub_user_token)
+    wit = Wit()
 
     ## Create a temporary repository
 
@@ -59,7 +61,7 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
     try:
         ## Train
         train = data.get('train')
-        if train[2].get('filetype') != 'zip':
+        if 'filetype' in train[2] and train[4].get('filetype') != 'zip':
             total_train = len(train)
             logger.info(f'{total_train} examples to train in Bothub')
             with tqdm(total=total_train, unit='examples') as pbar:
@@ -70,7 +72,7 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
                     pbar.update(1)
             logger.info('Examples submitted!')
         else:
-            with zipfile.ZipFile(data.get('train')[0].get('file'),'r') as training_file:
+            with zipfile.ZipFile(data.get('train')[0].get('filepath'),'r') as training_file:
                 with training_file.open('Benchmark_Training/expressions.json') as json_file:
                     training_data = json.loads(json_file.read().decode('utf-8'))
             for expression in training_data['data']:
@@ -103,6 +105,7 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
         test_result = []
         result_intent_test = ''
         def analyze_wrapper(text, expected={}):
+
             analyze_response = bothub.analyze(
                 temporary_repository.get('owner__nickname'),
                 temporary_repository.get('slug'),
@@ -120,7 +123,7 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
                 result_intent_test = 'FAILURE'                
             logger.info('Bothub return:')
             logger.info(f' - intent: {analyze_intent.get("name", "[not detected]")} ' +
-                        f'({analyze_intent.get("confidence", 0) * 100}%)')
+                        f'({int(analyze_intent.get("confidence", 0) * 100)}%)')
             test_result.append({
                 'text': text,
                 'intent': analyze_intent,
@@ -128,6 +131,9 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
                 'expected': expected,
                 'result': result_intent_test
             })
+
+            analyze_wit_response = wit.analyze(text,data.get('train')[3],data.get('train')[2].get('wit_token'))
+            print(analyze_wit_response.text)
 
         if type_tests:
             logger.warning('Typing mode ON, press CTRL + C to exit')
@@ -147,7 +153,30 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
     except Exception as e:
         raise e
     finally:
-        print(test_result)
+
+        ## Write CSV file with test results
+
+        logger.info(f'Writing CSV file...')
+        csv_headers = "Phrases,Expected intents,Bothub predicts,Confidence accuracy,Result by Intent,Detected entities,Known entities,Result by Entity, Entity accuracy\n"
+        with open('Bothub_output.csv', "w") as csv_file:
+            bothub_hits: int = 0
+            bothub_failures: int = 0
+            csv_file.write(csv_headers)
+            for example in test_result:
+                entities = ''
+                if len(example.get('entities')) > 0:
+                    entities = '|'
+                    for entity in example.get('entities'):
+                        entities += '{0}=>{1}|'.format(entity.get('value'), entity.get('entity'))
+                if example.get('result') == 'OK':
+                    bothub_hits += 1
+                else:
+                    bothub_failures += 1    
+                csv_file.write('{0},{1},{2},{3}%,{4},{5}'.format(example.get('text'),example.get('expected')[0].get('intent'),example.get('intent').get('name'),int(example.get('intent').get('confidence')*100),example.get('result'),entities))
+                csv_file.write('\n')                
+            csv_file.write('\n' + 'Analized phrases: {0}\nSuccess average: {1}%\nWrong predictions: {2}'.format(len(test_result), bothub_hits,bothub_failures))
+        logger.info(f'Bothub_output.csv saved!')
+
         ## Delete a temporary repository
 
         delete_repository_response = bothub.delete_repository(
