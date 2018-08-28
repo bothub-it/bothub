@@ -1,0 +1,82 @@
+version: '3.3'
+
+services:
+  database:
+      image: postgres
+      ports:
+        - 5432:5432
+      environment:
+        - POSTGRES_USER=${POSTGRES_USER:-bothub}
+        - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-bothub}
+        - POSTGRES_DB=${POSTGRES_DB:-bothub}
+  bothub-webapp:
+    image: ilha/bothub-webapp:${VERSION:-latest}
+    ports:
+      - 80:80
+    environment:
+      - API_BASE_URL=${API_BASE_URL:-http://localhost:8000}
+      - SUPPORTED_LANGUAGES=${SUPPORTED_LANGUAGES:-en|pt}
+      - MAILCHIMP_LOGIN=${MAILCHIMP_LOGIN}
+      - MAILCHIMP_DATACENTER=${MAILCHIMP_DATACENTER}
+      - MAILCHIMP_USER_ID=${MAILCHIMP_USER_ID}
+      - MAILCHIMP_LIST_ID=${MAILCHIMP_LIST_ID}
+  bothub:
+    image: ilha/bothub:${VERSION:-latest}
+    depends_on:
+      - database
+    ports:
+      - 8000:80
+    environment:
+      - SECRET_KEY=${SECRET_KEY:-SK}
+      - DEBUG=${DEBUG:-true}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS:-*}
+      - DEFAULT_DATABASE=${DEFAULT_DATABASE:-postgres://bothub:bothub@database:5432/bothub}
+      - LANGUAGE_CODE=${LANGUAGE_CODE:-en-us}
+      - TIME_ZONE=${TIME_ZONE:-UTC}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_PORT=${EMAIL_PORT:-25}
+      - DEFAULT_FROM_EMAIL=${DEFAULT_FROM_EMAIL:-webmaster@localhost}
+      - SERVER_EMAIL=${SERVER_EMAIL:-root@localhost}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - EMAIL_USE_SSL=${EMAIL_USE_SSL:-false}
+      - EMAIL_USE_TLS=${EMAIL_USE_TLS:-false}
+      - ADMINS=${ADMINS}
+      - CSRF_COOKIE_DOMAIN=${CSRF_COOKIE_DOMAIN}
+      - CSRF_COOKIE_SECURE=${CSRF_COOKIE_SECURE:-false}
+      - BOTHUB_WEBAPP_BASE_URL=${BOTHUB_WEBAPP_BASE_URL:-http://localhost/}
+      - BOTHUB_NLP_BASE_URL=${BOTHUB_NLP_BASE_URL:-http://localhost:2657/}
+      - CHECK_ACCESSIBLE_API_URL=${CHECK_ACCESSIBLE_API_URL}
+      - SEND_EMAILS=${SEND_EMAILS:-true}
+      - SUPPORTED_LANGUAGES=${SUPPORTED_LANGUAGES:-en|pt}
+  bothub-nlp:
+    image: ilha/bothub-nlp:${VERSION:-latest}${DOCKER_IMAGE_FLAVOR}
+    depends_on:
+      - database
+    ports:
+      - 2657:2657
+    environment:
+      - SECRET_KEY=${SECRET_KEY:-SK}
+      - DEBUG=${DEBUG:-true}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS:-*}
+      - DEFAULT_DATABASE=${DEFAULT_DATABASE:-postgres://bothub:bothub@database:5432/bothub}
+      - LANGUAGE_CODE=${LANGUAGE_CODE:-en-us}
+      - TIME_ZONE=${TIME_ZONE:-UTC}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_PORT=${EMAIL_PORT:-25}
+      - DEFAULT_FROM_EMAIL=${DEFAULT_FROM_EMAIL:-webmaster@localhost}
+      - SERVER_EMAIL=${SERVER_EMAIL:-root@localhost}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - EMAIL_USE_SSL=${EMAIL_USE_SSL:-false}
+      - EMAIL_USE_TLS=${EMAIL_USE_TLS:-false}
+      - ADMINS=${ADMINS}
+      - CSRF_COOKIE_DOMAIN=${CSRF_COOKIE_DOMAIN}
+      - CSRF_COOKIE_SECURE=${CSRF_COOKIE_SECURE:-false}
+      - BOTHUB_WEBAPP_BASE_URL=${BOTHUB_WEBAPP_BASE_URL:-http://localhost/}
+      - BOTHUB_NLP_BASE_URL=${BOTHUB_NLP_BASE_URL:-http://bothub-nlp:2657/}
+      - CHECK_ACCESSIBLE_API_URL=${CHECK_ACCESSIBLE_API_URL}
+      - SEND_EMAILS=${SEND_EMAILS:-true}
+      - SUPPORTED_LANGUAGES=${SUPPORTED_LANGUAGES:-en|pt}
+      - LOGGER_FORMAT=${LOGGER_FORMAT:-%(asctime)s - %(name)s - %(levelname)s - %(message)s}
+      - LOGGER_LEVEL=${LOGGER_LEVEL:-10}
