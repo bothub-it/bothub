@@ -102,6 +102,7 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
 
         ## Test
 
+        wit_matched_entities: int = 0
         test_bothub_result = []
         test_wit_result = []
         result_intent_test = ''
@@ -117,11 +118,9 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
             analyze = analyze_response.json()
             analyze_answer = analyze.get('answer')
             analyze_intent = analyze_answer.get('intent')
-            result_intent_test = []
+            result_intent_test = 'FALSE'
             if expected[0].get('intent') == analyze_intent.get('name'):
-                result_intent_test = 'OK'
-            else:
-                result_intent_test = 'FAILURE'                
+                result_intent_test = 'OK'             
             logger.info('Bothub return:')
             logger.info(f' - intent: {analyze_intent.get("name", "[not detected]")} ' +
                         f'({int(analyze_intent.get("confidence", 0) * 100)}%)')
@@ -135,26 +134,53 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
 
             analyze_wit_response = wit.analyze(text,data.get('train')[3],data.get('train')[2].get('wit_token'))
             entities = analyze_wit_response.json().get('entities')
+            
+            wit_entities_percentage:int = 0
+            wit_entity_result = ''
+            entity_matches: int = 0
+            known_entities_test: int = 0
+            entities_from_wit: int = 0
+            intent_result = ''
+            intent_confidence_result: int = 0
+            detected_entities_wit = '|'
+            intent_test_result = 'FALSE'
+            for entity in entities:
+                if entity != 'intent':
+                    for item in entities.get(entity):
+                        entities_from_wit += 1
+                        detected_entities_wit += '{0}=>{1}|'.format(item.get('value'), entity)
+                        if len(expected) > 1:
+                            for entity in expected[1].get('entities'):
+                                known_entities_test += 1
+                                if entity.get('entity') == entity:
+                                    entity_matches += 1
+            # print(str(entity_matches) +'----'+str(entities_from_wit)+'----'+str(known_entities_test))
+            if entities_from_wit == known_entities_test == entity_matches:
+                wit_entity_result = 'OK'
+                wit_entities_percentage = 100
+            elif entities_from_wit != known_entities_test and entity_matches > 0:
+                wit_entities_percentage = (bothub_entities_count/known_entities_count)*100
+                wit_entity_result = 'PARCIAL'
+            else:
+                wit_entities_percentage = 0
+                wit_entity_result = 'FAILURE'
 
-            intent_result = '-'
-            entities= '|'
-            # for key in entities:
-                # print(key)
-                # entities += str(key)+'|'
-                # print(entities)
             if 'intent' in entities:
-                print('--------------------------Open')
-                for entity in entities.get('intent'):
-                    # print(entities)
-                    # print('-'+str(entity) +''+entity.get('value'))
-                    test_wit_result.append({
-                        'text': text,
-                        'intent': entity.get('value'),
-                        'confidence': entity.get('confidence'),
-                        'expected':expected
-                    })
-                print('--------------------------Close')
-
+                intent_result = entities.get('intent')[0].get('value')
+                intent_confidence_result = entities.get('intent')[0].get('confidence')
+                if expected[0].get('intent') == intent_result:
+                    intent_test_result = 'OK'
+            test_wit_result.append({
+                'text': text,
+                'intent': intent_result,
+                'confidence': intent_confidence_result,
+                'expected':expected,
+                'entities': detected_entities_wit,
+                'result': intent_test_result,
+                'entity_percentage': wit_entities_percentage,
+                'entity_result': wit_entity_result
+            })
+            intent_result = ''
 
         if type_tests:
             logger.warning('Typing mode ON, press CTRL + C to exit')
@@ -179,6 +205,7 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
 
         logger.info(f'Writing CSV files...')
         csv_headers = "Phrases,Expected intents,Bothub predicts,Confidence accuracy,Result by Intent,Detected entities,Expected entities,Result by Entity, Entity accuracy\n"
+        expected_entities = ''
         with open('Bothub_output.csv', 'w') as csv_file:
             bothub_hits: int = 0
             bothub_failures: int = 0
@@ -190,9 +217,8 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
             csv_file.write(csv_headers)
             for example in test_bothub_result:
                 entities = ''
-                expected_entities = ''
+                expected_entities = '|'
                 if len(example.get('expected')) > 1:
-                    expected_entities = '|'
                     for entity in example.get('expected')[1].get('entities'):
                         known_entities_count += 1
                         expected_entities += '{0}=>{1}|'.format(entity.get('value'), entity.get('entity'))
@@ -203,8 +229,10 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
                         entities += '{0}=>{1}|'.format(entity.get('value'), entity.get('entity'))
                         if len(example.get('expected')) > 1:
                             for known_entity in example.get('expected')[1].get('entities'):
-                                if entity.get('entity') == known_entity.get('entity'):
+                                # print(entity.get('entity') + '--'+known_entity.get('entity'))
+                                if entity.get('entity').lower() == known_entity.get('entity').lower():
                                     matched_entities += 1
+                print(str(bothub_entities_count)+'---'+str(known_entities_count)+expected_entities+'---'+str(matched_entities))
                 if example.get('result') == 'OK':
                     bothub_hits += 1
                 else:
@@ -229,12 +257,21 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
             csv_file.write('\n' + 'Analized phrases: {0}\nSuccess average: {1}%\nWrong predictions: {2}'.format(len(test_bothub_result), bothub_hits,bothub_failures))
         logger.info(f'Bothub_output.csv saved!')
 
+        csv_headers = "Phrases,Expected intents,Wit predicts,Confidence accuracy,Result by Intent,Detected entities,Expected entities,Result by Entity, Entity accuracy\n"
         with open('Wit_output.csv','w') as csv_file:
             wit_hits: int = 0
             wit_failures: int = 0
             csv_file.write(csv_headers)
             for example in test_wit_result:
-                csv_file.write('{0},{1},{2},{3}%,{4},{5}'.format(example.get('text'),example.get('expected')[0].get('intent'),example.get('intent'),int(example.get('confidence')*100),example.get('result'),entities))
+                if len(example.get('expected')) > 1:
+                    expected_entities = '|'
+                    for entity in example.get('expected')[1].get('entities'):
+                        expected_entities += '{0}=>{1}|'.format(entity.get('value'), entity.get('entity'))
+                if example.get('result') == 'OK':
+                    wit_hits += 1
+                else:
+                    wit_failures += 1
+                csv_file.write('{0},{1},{2},{3}%,{4},{5},{6},{7},{8}%'.format(example.get('text'),example.get('expected')[0].get('intent'),example.get('intent'),int(example.get('confidence')*100),example.get('result'),example.get('entities'),expected_entities,example.get('entity_result'),example.get('entity_percentage')))
                 csv_file.write('\n')
             csv_file.write('\n' + 'Analized phrases: {0}\nSuccess average: {1}%\nWrong predictions: {2}'.format(len(test_wit_result), wit_hits,wit_failures))
         logger.info(f'Wit_output.csv saved!')
