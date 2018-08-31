@@ -23,7 +23,7 @@ class Bothub(Service):
             headers.update({ 'Content-Type': 'application/json' })
         request = Request(
             method,
-            f'https://bothub.it/api/{path}/',
+            f'http://staging.bothub.it:8000/{path}/',
             data=json.dumps(data),
             headers=headers)
         prepped = request.prepare()
@@ -116,6 +116,7 @@ class Bothub(Service):
 
     def submit_from_wit_format(self, repository_uuid, example, language=None):
         data = {'repository': repository_uuid, 'text': example[0], 'entities': example[1], 'intent': example[2]}
+        print(data)
         return Bothub.api_request('example/new', data, user_token=self.user_token)
 
     def train(self, owner_nickname, slug):

@@ -85,9 +85,10 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
                         intent = entity['value'].strip('\"').lower()
                     else:
                         new_entity = {}
-                        new_entity['entity'] = entity['entity']
+                        new_entity['entity'] = entity['value'] #entity['entity']
                         new_entity['start'] = entity['start']
                         new_entity['end'] = entity['end']
+                        new_entity['label'] = entity['entity']
                         filtered_entities.append(new_entity)
                 example_submit_response = bothub.submit_from_wit_format(temporary_repository.get('uuid'),[text,filtered_entities,intent])
                 logger.debug(f'example trained {example_submit_response.text}')
