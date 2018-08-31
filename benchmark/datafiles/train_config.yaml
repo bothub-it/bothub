@@ -1,9 +1,9 @@
 language: pt_br
 train:
-  - filepath: /Users/periclesjr/Documents/Benchmark/bothub/benchmark/datafiles/Benchmark_Training.zip
-  - filename: 'Benchmark_Training'
-  - wit_token: 'Bearer OWL5XSVZVJNJS4BAVLVXV6STDU7SMPUF'
-  - wit_version: 20180808
+  - filepath: ##########
+  - filename: ##########
+  - wit_token: #########
+  - wit_version: #######
   - filetype: zip
 tests:
   - text: O Real Madrid jogará hoje?
@@ -389,6 +389,8 @@ tests:
           entity: modelo_moto
         - value: honda
           entity: marca
+        - value: moto
+          entity: veiculo
   - text: Quando sai o novo lançamento do FIAT
     expected:
       - intent: automoveis

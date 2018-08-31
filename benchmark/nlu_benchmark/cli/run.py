@@ -138,28 +138,32 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
             wit_entities_percentage:int = 0
             wit_entity_result = ''
             entity_matches: int = 0
-            known_entities_test: int = 0
-            entities_from_wit: int = 0
+            known_entities_test = []
+            entities_from_wit = []
             intent_result = ''
             intent_confidence_result: int = 0
             detected_entities_wit = '|'
             intent_test_result = 'FALSE'
+            
             for entity in entities:
                 if entity != 'intent':
                     for item in entities.get(entity):
-                        entities_from_wit += 1
+                        entities_from_wit.append(entity.lower())
                         detected_entities_wit += '{0}=>{1}|'.format(item.get('value'), entity)
-                        if len(expected) > 1:
-                            for entity in expected[1].get('entities'):
-                                known_entities_test += 1
-                                if entity.get('entity') == entity:
-                                    entity_matches += 1
-            # print(str(entity_matches) +'----'+str(entities_from_wit)+'----'+str(known_entities_test))
-            if entities_from_wit == known_entities_test == entity_matches:
+            for item in expected:
+                if 'entities' in item:
+                    for entity in item.get('entities'):
+                        known_entities_test.append(entity.get('entity').lower())
+            for item in entities_from_wit:
+                for expected_item in known_entities_test:
+                    if item == expected_item:
+                        entity_matches += 1
+                        break
+            if len(entities_from_wit) == len(known_entities_test) == entity_matches:
                 wit_entity_result = 'OK'
                 wit_entities_percentage = 100
-            elif entities_from_wit != known_entities_test and entity_matches > 0:
-                wit_entities_percentage = (bothub_entities_count/known_entities_count)*100
+            elif (len(entities_from_wit) != entity_matches or entity_matches != len(known_entities_test)) and entity_matches > 0:
+                wit_entities_percentage = (entity_matches/len(known_entities_test))*100
                 wit_entity_result = 'PARCIAL'
             else:
                 wit_entities_percentage = 0
@@ -229,10 +233,8 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
                         entities += '{0}=>{1}|'.format(entity.get('value'), entity.get('entity'))
                         if len(example.get('expected')) > 1:
                             for known_entity in example.get('expected')[1].get('entities'):
-                                # print(entity.get('entity') + '--'+known_entity.get('entity'))
                                 if entity.get('entity').lower() == known_entity.get('entity').lower():
                                     matched_entities += 1
-                print(str(bothub_entities_count)+'---'+str(known_entities_count)+expected_entities+'---'+str(matched_entities))
                 if example.get('result') == 'OK':
                     bothub_hits += 1
                 else:
@@ -263,8 +265,8 @@ def run(data_file_path, data_file_type='yaml', bothub_user_token=None,
             wit_failures: int = 0
             csv_file.write(csv_headers)
             for example in test_wit_result:
+                expected_entities = '|'
                 if len(example.get('expected')) > 1:
-                    expected_entities = '|'
                     for entity in example.get('expected')[1].get('entities'):
                         expected_entities += '{0}=>{1}|'.format(entity.get('value'), entity.get('entity'))
                 if example.get('result') == 'OK':
