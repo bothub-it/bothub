@@ -23,7 +23,7 @@ class Bothub(Service):
             headers.update({ 'Content-Type': 'application/json' })
         request = Request(
             method,
-            f'https://bothub.it/api/{path}/',
+            f'http://staging.bothub.it:8000/{path}/',
             data=json.dumps(data),
             headers=headers)
         prepped = request.prepare()
