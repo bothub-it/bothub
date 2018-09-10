@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3'
 
 services:
   database:
@@ -54,7 +54,7 @@ services:
     depends_on:
       - database
     ports:
-      - 2657:2657
+      - 2657
     environment:
       - SECRET_KEY=${SECRET_KEY:-SK}
       - DEBUG=${DEBUG:-true}
