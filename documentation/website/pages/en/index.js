@@ -1,15 +1,8 @@
-/**
- * Copyright (c) 2017-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 const React = require('react');
 
 const CompLibrary = require('../../core/CompLibrary.js');
 
-const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
+const MarkdownBlock = CompLibrary.MarkdownBlock;
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
@@ -51,12 +44,6 @@ const SplashContainer = props => (
   </div>
 );
 
-const Logo = props => (
-  <div className="projectLogo">
-    <img src={props.img_src} alt="Project Logo" />
-  </div>
-);
-
 const ProjectTitle = () => (
   <h2 className="projectTitle">
     {siteConfig.title}
@@ -77,13 +64,12 @@ class HomeSplash extends React.Component {
     const language = this.props.language || '';
     return (
       <SplashContainer>
-        <Logo img_src={imgUrl('docusaurus.svg')} />
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
-            <Button href="#try">Try It Out</Button>
-            <Button href={docUrl('doc1.html', language)}>Example Link</Button>
-            <Button href={docUrl('doc2.html', language)}>Example Link 2</Button>
+            <Button href="https://bothub.it/" target="_blank">Create your bots</Button>
+            <Button href={docUrl('doc1.html', language)}>NLU Parse Docs</Button>
+            <Button href={docUrl('doc1.html', language)}>Bothub API</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -104,64 +90,33 @@ const Features = () => (
   <Block layout="fourColumn">
     {[
       {
-        content: 'This is the content of my feature',
-        image: imgUrl('docusaurus.svg'),
+        content: 'Support languages and dialects',
+        image: imgUrl('icon/earth.png'),
         imageAlign: 'top',
-        title: 'Feature One',
+        title: 'Multi language support',
       },
       {
-        content: 'The content of my second feature',
-        image: imgUrl('docusaurus.svg'),
+        content: 'Without cost or payment',
+        image: imgUrl('icon/thumb-up.png'),
         imageAlign: 'top',
-        title: 'Feature Two',
+        title: 'Free',
       },
-    ]}
-  </Block>
-);
-
-const FeatureCallout = () => (
-  <div
-    className="productShowcaseSection paddingBottom"
-    style={{textAlign: 'center'}}>
-    <h2>Feature Callout</h2>
-    <MarkdownBlock>These are features of this project</MarkdownBlock>
-  </div>
-);
-
-const LearnHow = () => (
-  <Block background="light">
-    {[
       {
-        content: 'Talk about learning how to use this',
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'right',
-        title: 'Learn How',
-      },
-    ]}
-  </Block>
-);
-
-const TryOut = () => (
-  <Block id="try">
-    {[
-      {
-        content: 'Talk about trying this out',
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'left',
-        title: 'Try it Out',
+        content: 'Check our code in Github',
+        image: imgUrl('icon/github-circle.png'),
+        imageAlign: 'top',
+        title: 'Open Source',
       },
     ]}
   </Block>
 );
 
 const Description = () => (
-  <Block background="dark">
+  <Block background="light">
     {[
       {
-        content: 'This is another description of how this project is useful',
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'right',
-        title: 'Description',
+        content: 'This projected is powered by Ilhasoft, a Brazilian enterprise.',
+        title: 'Powered by Ilhasoft',
       },
     ]}
   </Block>
@@ -201,9 +156,6 @@ class Index extends React.Component {
         <HomeSplash language={language} />
         <div className="mainContainer">
           <Features />
-          <FeatureCallout />
-          <LearnHow />
-          <TryOut />
           <Description />
           <Showcase language={language} />
         </div>

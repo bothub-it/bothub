@@ -1,4 +1,4 @@
-const baseUrl = '/bothub/';
+const baseUrl = '/';
 
 const users = [
   {
@@ -12,7 +12,7 @@ const users = [
 const siteConfig = {
   title: 'Bothub',
   tagline: 'An open platform for predicting, training and sharing NLP datasets in multiple languages.',
-  url: 'https://ilhasoft.bothub.it',
+  url: 'https://docs.bothub.it',
   baseUrl,
   projectName: 'bothub',
   organizationName: 'Ilhasoft',
@@ -23,12 +23,12 @@ const siteConfig = {
     {blog: true, label: 'Blog'},
   ],
   users,
-  headerIcon: 'img/docusaurus.svg',
-  footerIcon: 'img/docusaurus.svg',
+  headerIcon: 'img/botinho.svg',
+  footerIcon: 'img/botinho.svg',
   favicon: 'img/favicon.png',
   colors: {
-    primaryColor: '#2E8555',
-    secondaryColor: '#205C3B',
+    primaryColor: '#00E676',
+    secondaryColor: '#00C853',
   },
   copyright: `Copyright © ${new Date().getFullYear()} Bothub`,
   highlight: {
