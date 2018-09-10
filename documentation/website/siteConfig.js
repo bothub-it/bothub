@@ -17,8 +17,9 @@ const siteConfig = {
   projectName: 'bothub',
   organizationName: 'Ilhasoft',
   headerLinks: [
-    {doc: 'doc1', label: 'Docs'},
-    {doc: 'doc4', label: 'API'},
+    {doc: 'bothub', label: 'Docs'},
+    {doc: 'api', label: 'API'},
+    {doc: 'nlu', label: 'NLU'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
   ],
@@ -39,6 +40,7 @@ const siteConfig = {
   cleanUrl: true,
   ogImage: 'img/docusaurus.png',
   twitterImage: 'img/docusaurus.png',
+  repoUrl: 'Ilhasoft/bothub',
 };
 
 module.exports = siteConfig;
