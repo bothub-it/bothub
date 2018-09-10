@@ -68,8 +68,9 @@ class HomeSplash extends React.Component {
           <ProjectTitle />
           <PromoSection>
             <Button href="https://bothub.it/" target="_blank">Create your bots</Button>
-            <Button href={docUrl('parse.html', language)}>NLU Parse Docs</Button>
+            <Button href={docUrl('bothub.html', language)}>About Bothub</Button>
             <Button href={docUrl('api.html', language)}>Bothub API</Button>
+            <Button href={docUrl('nlu.html', language)}>NLU Docs</Button>
           </PromoSection>
         </div>
       </SplashContainer>
