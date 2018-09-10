@@ -30,7 +30,7 @@ class Footer extends React.Component {
               Bothub
             </a>
             <a href={this.docUrl('nlu.html', this.props.language)}>
-              NLU Parse
+              NLU
             </a>
             <a href={this.docUrl('api.html', this.props.language)}>
               API
