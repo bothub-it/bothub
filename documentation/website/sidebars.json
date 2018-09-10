@@ -1,0 +1,11 @@
+{
+  "docs": {
+    "Bothub": ["bothub"]
+  },
+  "api": {
+    "API": ["api"]
+  },
+  "nlu": {
+    "NLU": ["nlu"]
+  }
+}
