@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Bothub Blog</title>
+        <link>https://docs.bothub.it/blog</link>
+        <description>The best place to stay up-to-date with the latest Bothub news and events.</description>
+        <lastBuildDate>Mon, 10 Sep 2018 06:00:00 GMT</lastBuildDate>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <generator>Feed for Node.js</generator>
+        <image>
+            <title>Bothub Blog</title>
+            <url>https://docs.bothub.it/img/botinho.svg</url>
+            <link>https://docs.bothub.it/blog</link>
+        </image>
+        <copyright>Copyright © 2018 Bothub</copyright>
+        <item>
+            <title><![CDATA[Bothub documentation available]]></title>
+            <link>https://docs.bothub.it/blog/2018/09/10/bothub-documentation-available.html</link>
+            <guid>https://docs.bothub.it/blog/2018/09/10/bothub-documentation-available.html</guid>
+            <pubDate>Mon, 10 Sep 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Today, September 10, we began the process of documenting the Bothub project.</p> <p>The documentation will be divided into 4 parts:</p> <ul> <li><strong>Docs:</strong> General documentation.</li> <li><strong>API:</strong> Rest API Documentation.</li> <li><strong>NLU:</strong> Text parsing and model training.</li> <li><strong>Blog:</strong> News and announcements...</li></ul>]]></description>
+        </item>
+    </channel>
+</rss>
