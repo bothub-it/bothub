@@ -29,7 +29,7 @@ class Footer extends React.Component {
             <a href={this.docUrl('bothub.html', this.props.language)}>
               Bothub
             </a>
-            <a href={this.docUrl('parse.html', this.props.language)}>
+            <a href={this.docUrl('nlu.html', this.props.language)}>
               NLU Parse
             </a>
             <a href={this.docUrl('api.html', this.props.language)}>
