@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://docs.bothub.it/blog</id>
+    <title>Bothub Blog</title>
+    <updated>2018-09-10T06:00:00Z</updated>
+    <generator>Feed for Node.js</generator>
+    <link rel="alternate" href="https://docs.bothub.it/blog"/>
+    <subtitle>The best place to stay up-to-date with the latest Bothub news and events.</subtitle>
+    <logo>https://docs.bothub.it/img/botinho.svg</logo>
+    <rights>Copyright © 2018 Bothub</rights>
+    <entry>
+        <title type="html"><![CDATA[Bothub documentation available]]></title>
+        <id>https://docs.bothub.it/blog/2018/09/10/bothub-documentation-available.html</id>
+        <link href="https://docs.bothub.it/blog/2018/09/10/bothub-documentation-available.html">
+        </link>
+        <updated>2018-09-10T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>Today, September 10, we began the process of documenting the Bothub project.</p> <p>The documentation will be divided into 4 parts:</p> <ul> <li><strong>Docs:</strong> General documentation.</li> <li><strong>API:</strong> Rest API Documentation.</li> <li><strong>NLU:</strong> Text parsing and model training.</li> <li><strong>Blog:</strong> News and announcements...</li></ul>]]></summary>
+        <author>
+            <name>Douglas Paz</name>
+            <uri>https://douglaspaz.com/</uri>
+        </author>
+    </entry>
+</feed>
