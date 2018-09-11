@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Bothub": ["bothub"]
+    "Bothub": ["bothub", "bothub-it"]
   },
   "api": {
     "API": ["api"]
