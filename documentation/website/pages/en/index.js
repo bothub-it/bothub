@@ -116,7 +116,7 @@ const Description = () => (
   <Block background="light">
     {[
       {
-        content: 'This projected is powered by Ilhasoft, a Brazilian enterprise.',
+        content: 'This project is powered by [Ilhasoft](http://www.ilhasoft.com.br/en/), a Brazilian enterprise.',
         title: 'Powered by Ilhasoft',
       },
     ]}
