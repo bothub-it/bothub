@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Bothub API Docs · Bothub</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Full API documentation."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Bothub API Docs · Bothub"/><meta property="og:type" content="website"/><meta property="og:url" content="https://docs.bothub.it/index.html"/><meta property="og:description" content="Full API documentation."/><meta property="og:image" content="https://docs.bothub.it/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://docs.bothub.it/img/docusaurus.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://docs.bothub.it/blog/atom.xml" title="Bothub Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://docs.bothub.it/blog/feed.xml" title="Bothub Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/botinho.svg" alt="Bothub"/><h2 class="headerTitleWithLogo">Bothub</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/bothub" target="_self">Docs</a></li><li class="siteNavGroupActive siteNavItemActive"><a href="/docs/en/api" target="_self">API</a></li><li class=""><a href="/docs/en/nlu" target="_self">NLU</a></li><li class=""><a href="/en/help" target="_self">Help</a></li><li class=""><a href="/blog" target="_self">Blog</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/pt-BR/api">Português (Brasil)</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>API</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/api">API</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Bothub API Docs</h1></header><article><div><span><p>Full API documentation.</p>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/botinho.svg" alt="Bothub" width="66"/></a><div><h5>Docs</h5><a href="/docs/en/bothub.html">Bothub</a><a href="/docs/en/nlu.html">NLU</a><a href="/docs/en/api.html">API</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="https://www.twitter.com" target="_blank">Twitter</a><a href="https://www.facebook.com/bothub.it" target="_blank">Facebook</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/Ilhasoft/bothub">GitHub</a><a class="github-button" href="https://github.com/Ilhasoft/bothub" data-icon="octicon-star" data-show-count="true" aria-label="Star Ilhasoft/bothub on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Bothub</section></footer></div></body></html>
