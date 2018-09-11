@@ -22,7 +22,7 @@ repositories.
 
 ## Documentation
 
-Coming soon!
+All documentation available on [docs.bothub.it](https://docs.bothub.it/).
 
 ## Contributing
 
