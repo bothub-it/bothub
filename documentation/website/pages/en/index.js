@@ -1,6 +1,7 @@
 const React = require('react');
 
 const CompLibrary = require('../../core/CompLibrary.js');
+const translate = require('../../server/translate.js').translate;
 
 const MarkdownBlock = CompLibrary.MarkdownBlock;
 const Container = CompLibrary.Container;
@@ -67,10 +68,10 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
-            <Button href="https://bothub.it/" target="_blank">Create your bots</Button>
-            <Button href={docUrl('bothub.html', language)}>About Bothub</Button>
-            <Button href={docUrl('api.html', language)}>Bothub API</Button>
-            <Button href={docUrl('nlu.html', language)}>NLU Docs</Button>
+            <Button href="https://bothub.it/" target="_blank"><translate>Create your bots</translate></Button>
+            <Button href={docUrl('bothub.html', language)}><translate>About Bothub</translate></Button>
+            <Button href={docUrl('api.html', language)}><translate>Bothub API</translate></Button>
+            <Button href={docUrl('nlu.html', language)}><translate>NLU Docs</translate></Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -136,12 +137,12 @@ const Showcase = props => {
 
   return (
     <div className="productShowcaseSection paddingBottom">
-      <h2>Who is Using This?</h2>
-      <p>This project is used by all these people</p>
+      <h2><translate>Who is Using This?</translate></h2>
+      <p><translate>This project is used by all these people</translate></p>
       <div className="logos">{showcase}</div>
       <div className="more-users">
         <a className="button" href={pageUrl('users.html', props.language)}>
-          More {siteConfig.title} Users
+          <translate>More Users</translate>
         </a>
       </div>
     </div>
