@@ -20,7 +20,7 @@ For communication with other applications, the Engine serves an HTTP service as 
 
 ### NLP
 
-[Github](https://github.com/Ilhasoft/bothub-nlp) | [Documentação do NLU](/docs/en/nlu)
+[Github](https://github.com/Ilhasoft/bothub-nlp) | [NLU Docs](/docs/en/nlu)
 
 Bothub NLP integrates tools for training statistical models and for prediction based on them.
 
