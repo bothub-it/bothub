@@ -4,55 +4,55 @@ title: About Bothub
 sidebar_label: About Bothub
 ---
 
-O Bothub é uma plataforma aberta para prever, treinar e compartilhar datasets de PLN (Processamento de Linguagem Natural) em vários idiomas. Ele é o Github para PLN, que permite construir, melhorar, treinar e traduzir datasets.
+Bothub is an open platform for predicting, training and sharing NLP (Natural Language Processing) datasets in multiple languages. It is Github for NLP, which allows you to build, improve, train and translate datasets.
 
-## Aplicações e Serviços
+## Apps and services
 
-O projeto conta com três aplicações, distribuídos em 3 repositórios Git.
+The project has three applications, distributed in 3 Git repositories.
 
 ### Engine
 
-[Github](https://github.com/Ilhasoft/bothub-engine) | [Documentação da API](/docs/pt-BR/api)
+[Github](https://github.com/Ilhasoft/bothub-engine) | [API Docs](/docs/en/api)
 
-O Bothub Engine é reponsável por validar e persistir os dados do sistema no banco de dados. Esses dados podem ser usuários, bots (repositórios), sentenças (exemplos), treinamentos (modelos estatísticos) e logs.
+Bothub Engine is responsible for validating and persisting system data in the database. These data can be users, bots (repositories), sentences (examples), training (statistical models) and logs.
 
-Para a comunicação com outras aplicações, o Engine, serve um serviço HTTP com Rest API. Você pode consultar a documentação dessa API [aqui](/docs/api.html).
+For communication with other applications, the Engine serves an HTTP service as Rest API. You can check API Docs [here](/docs/en/api).
 
 ### NLP
 
-[Github](https://github.com/Ilhasoft/bothub-nlp) | [Documentação do NLU](/docs/pt-BR/nlu)
+[Github](https://github.com/Ilhasoft/bothub-nlp) | [Documentação do NLU](/docs/en/nlu)
 
-O Bothub NLP integra ferramentas para treinamento de modelos estatísticos e para predição baseado neles.
+Bothub NLP integrates tools for training statistical models and for prediction based on them.
 
 #### NLU
 
-Hoje o NLP conta apenas com um sistema de NLU (Natural Language Understanding) a principal funcionalidade do projeto.
+Currently NLP has only one service, the NLU application which is its main feature.
 
-O NLP recupera as sentenças (exemplos) alimentados pelo Engine e utilizando aprendizado de máquina gera modelos estatísticos. Após ter um modelo treinado o sistema passa a identificar intenções e consegue extrair entidades de textos.
+NLP retrieves the sentences (examples) fed by the Engine and using machine learning generates statistical models. After having a trained model the system begins to identify intentions and manages to extract entities of texts.
 
-Os usuários podem se comunicar com o NLP através de um serviço HTTP. Consulte a documentação dessa API [aqui](/docs/pt-BR/nlu).
+Users can communicate with the NLP through an HTTP service. See the documentation for this API  [here](/docs/en/nlu).
 
-##### Exemplo
+##### Example
 
-Entrada:
+Input:
 ```
-Gostaria de comprar um carro.
+I would like to buy a car.
 ```
 
-Saída:
+Output:
 ```
-Intenção: "buy"
+Intent: "buy"
 
-Entidades:
-- Entidade: "car"
-  Valor: "carro"
-  Categoria: "vehicle"
+Entities:
+- Entity: "car"
+  Value: "carro"
+  Label: "vehicle"
 ```
 
 ### Webapp
 
 [Github](https://github.com/Ilhasoft/bothub-webapp)
 
-O Bothub Webapp é a interface web onde os usuários podem se comunicar de uma forma intuitíva com os demais projetos.
+Bothub Webapp is the web interface where users can communicate in an intuitive way with other projects.
 
-No Webapp é possível criar e gerenciar sua conta, bots, sentenças e treinamentos.
+In Webapp you can create and manage your account, bots, sentences and trainings.
