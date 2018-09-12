@@ -4,30 +4,30 @@ title: bothub.it
 sidebar_label: bothub.it
 ---
 
-O [bothub.it](https://bothub.it/) é um serviço mantido pela [Ilhasoft](http://www.ilhasoft.com.br/en/) com toda a infraestrutura do Bothub, de forma aberta, gratuita e com mínimo de downtime.
+[bothub.it](https://bothub.it/) is a service maintained by [Ilhasoft](http://www.ilhasoft.com.br/en/) with all of Bothub's infrastructure, openly, free of charges and with minimal downtime.
 
-## Pontos de acesso e ambientes
+## Endpoints and environments
 
-Ao acessar [bothub.it](https://bothub.it/) você tem acesso ao [Bothub Webapp](/docs/pt-BR/bothub#webapp).
+By accessing [bothub.it](https://bothub.it/) you have access to [Bothub Webapp](/docs/en/bothub#webapp)
 
 ### api.bothub.it
 
-Em [api.bothub.it](https://api.bothub.it/) você tem acesso ao serviço HTTP do [Bothub Engine](/docs/pt-BR/bothub#engine).
+In [api.bothub.it](https://api.bothub.it/) you have access to the [Bothub Engine](/docs/en/bothub#engine) HTTP service.
 
 ### nlp.bothub.it
 
-Em [nlp.bothub.it](https://nlp.bothub.it/) você tem acesso ao serviço HTTP do [Bothub NLP](/docs/pt-BR/bothub#nlp).
+In [nlp.bothub.it](https://nlp.bothub.it/) you have access to the [Bothub NLP](/docs/en/bothub#nlp) HTTP service.
 
 ### staging.bothub.it
 
-[staging.bothub.it](https://staging.bothub.it/) é o ambiente de testes e homologação. Nele está hospedada toda a infraestrutura da branch `develop`.
+[staging.bothub.it](https://staging.bothub.it/) is the staging environment. Here Bothub's infrastructure is hosted using its `develop` branch source code.
 
-Em [staging.bothub.it](https://staging.bothub.it/) você tem acesso ao [Bothub Webapp](/docs/pt-BR/bothub#webapp).
+In [staging.bothub.it](https://staging.bothub.it/) you have access to the [Bothub Webapp](/docs/en/bothub#webapp).
 
-Em [staging.bothub.it:8000](https://staging.bothub.it:8000/) você tem acesso ao serviço HTTP do [Bothub Engine](/docs/pt-BR/bothub#engine).
+In [staging.bothub.it:8000](https://staging.bothub.it:8000/) you have access to the [Bothub Engine](/docs/en/bothub#engine) HTTP service.
 
-Em [staging.bothub.it:2657](https://staging.bothub.it:2657/) você tem acesso ao serviço HTTP do [Bothub NLP](/docs/pt-BR/bothub#nlp).
+In [staging.bothub.it:2657](https://staging.bothub.it:2657/) you have access to the [Bothub NLP](/docs/en/bothub#nlp) HTTP service.
 
 ### docs.bothub.it
 
-Em [docs.bothub.it](https://docs.bothub.it/) você tem acesso a documentação do Bothub.
+In [docs.bothub.it](https://docs.bothub.it/) you have access to the Bothub Docs.
