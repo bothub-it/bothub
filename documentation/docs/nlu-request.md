@@ -20,11 +20,11 @@ Credentials must be passed as the Authorization header for each request. Make su
 
 ### Authorization Token
 
-To make requests you need an Authorization Token. It identifies who are the user and what bot (repository) is responsible for processing, in other words, each user has a token for each repository that they have access to.
+To make requests you need an Authorization Token. It identifies the user and which bot (repository) is responsible for processing the request, in other words, each user has a token for each repository that they have access to.
 
 You can retrieve this Authorization Token visiting your repository page in Bothub Webapp at Analyze tab or make [authenticated request to API]() to [Authorization Token Endpoint]().
 
-The Authorization Token is a UUID using canonical textual representation.
+The Authorization Token is an UUID using canonical textual representation, as follows:
 
 **E.g.:**
 
