@@ -24,30 +24,7 @@ For communication with other applications, the Engine serves an HTTP service as 
 
 Bothub NLP integrates tools for training statistical models and predictions based on them.
 
-#### NLU
-
-Currently NLP has only one service, the NLU application which is its main feature.
-
-NLP retrieves the sentences (examples) fed by the Engine and, using machine learning generates statistical models. After having a trained model, the system begins to identify intents and entities in the analyzed texts.
-
-Users can communicate with the NLP through an HTTP service. See the documentation for this API  [here](/docs/en/nlu).
-
-##### Example
-
-Input:
-```text
-I would like to buy a car.
-```
-
-Output:
-```text
-Intent: "buy"
-
-Entities:
-- Entity: "car"
-  Value: "carro"
-  Label: "vehicle"
-```
+Currently NLP has only one service, the [NLU](/docs/en/nlu) application which is its main feature.
 
 ### Webapp
 

@@ -10,10 +10,10 @@
   },
   "nlu": {
     "NLU": [
-      "nlu",
-      "nlu-request"
+      "nlu"
     ],
-    "Endpoints": [
+    "API Endpoints": [
+      "nlu-request",
       "nlu-info",
       "nlu-parse",
       "nlu-train"
