@@ -1,7 +1,7 @@
 ---
 id: nlu
 title: NLU Docs
-sidebar_label: NLU
+sidebar_label: Introduction
 ---
 
-Full NLU documentation.
+NLU is a service of [NLP application](/docs/en/bothub#nlp).
