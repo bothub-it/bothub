@@ -6,6 +6,17 @@ sidebar_label: bothub.it
 
 [bothub.it](https://bothub.it/) is a service maintained by [Ilhasoft](http://www.ilhasoft.com.br/en/) with all of Bothub's infrastructure, openly, free of charges and with minimal downtime.
 
+## Language supported by bothub.it
+
+- English
+- German
+- Spanish
+- Portuguese
+- French
+- Italian
+- Dutch
+- Brazilian Portuguese
+
 ## Endpoints and environments
 
 By accessing [bothub.it](https://bothub.it/) you have access to [Bothub Webapp](/docs/en/bothub#webapp)
