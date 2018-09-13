@@ -16,7 +16,7 @@ You can make HTTP requests to the NLU's endpoints available in NLP HTTP service.
 
 ## Credential
 
-Credentials must be passed as the Authorization header for each request. Make sure your have the `Authentication: Bearer [Your Authorization Token]` HTTP header to all requests.
+Credentials must be passed as the Authorization header for each request. Make sure you have the `Authentication: Bearer [Your Authorization Token]` HTTP header to all requests.
 
 ### Authorization Token
 
