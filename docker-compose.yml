@@ -10,7 +10,7 @@ services:
         - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-bothub}
         - POSTGRES_DB=${POSTGRES_DB:-bothub}
   bothub-webapp:
-    image: ilha/bothub-webapp:${VERSION:-latest}
+    image: ${BOTHUB_WEBAPP_DOCKER_IMAGE_NAME:-ilha/bothub-webapp}:${BOTHUB_WEBAPP_DOCKER_IMAGE_TAG:-latest}
     ports:
       - 80:80
     environment:
@@ -21,7 +21,7 @@ services:
       - MAILCHIMP_USER_ID=${MAILCHIMP_USER_ID}
       - MAILCHIMP_LIST_ID=${MAILCHIMP_LIST_ID}
   bothub:
-    image: ilha/bothub:${VERSION:-latest}
+    image: ${BOTHUB_ENGINE_DOCKER_IMAGE_NAME:-ilha/bothub}:${BOTHUB_ENGINE_DOCKER_IMAGE_TAG:-latest}
     depends_on:
       - database
     ports:
@@ -50,11 +50,11 @@ services:
       - SEND_EMAILS=${SEND_EMAILS:-true}
       - SUPPORTED_LANGUAGES=${SUPPORTED_LANGUAGES:-en|pt}
   bothub-nlp:
-    image: ilha/bothub-nlp:${VERSION:-latest}${DOCKER_IMAGE_FLAVOR}
+    image: ${BOTHUB_NLP_DOCKER_IMAGE_NAME:-ilha/bothub-nlp}:${BOTHUB_NLP_DOCKER_IMAGE_TAG:-latest}
     depends_on:
       - database
     ports:
-      - 2657
+      - 2657:2657
     environment:
       - SECRET_KEY=${SECRET_KEY:-SK}
       - DEBUG=${DEBUG:-true}
