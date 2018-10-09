@@ -23,6 +23,6 @@ Intent: "buy"
 
 Entities:
 - Entity: "car"
-  Value: "carro"
+  Value: "car"
   Label: "vehicle"
 ```
