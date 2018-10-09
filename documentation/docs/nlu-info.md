@@ -4,6 +4,10 @@ title: NLU Info - /info
 sidebar_label: /info
 ---
 
+Get bot (repository) details.
+
+The response content is same from repository endpoint available in Bothub Engine HTTP service.
+
 ## Resource Information
 
 | Title | Value |
