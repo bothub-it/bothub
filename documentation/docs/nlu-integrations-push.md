@@ -1,7 +1,7 @@
 ---
 id: tutorial_en
-title: Tutorial
-sidebar_label: Tutorial
+title: Unite the power of Bothub with Push
+sidebar_label: Push
 ---
 
 ## Creating your account on Push
