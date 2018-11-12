@@ -12,6 +12,9 @@
     "NLU": [
       "nlu"
     ],
+    "Integrations": [
+      "tutorial_en"
+    ],
     "API Endpoints": [
       "nlu-request",
       "nlu-info",
