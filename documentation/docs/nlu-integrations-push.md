@@ -1,5 +1,5 @@
 ---
-id: tutorial_en
+id: nlu-integrations-push
 title: Unite the power of Bothub with Push
 sidebar_label: Push
 ---
@@ -151,7 +151,3 @@ Though the Telegram chat, send the keyword trigger that you've set, test it and 
 Cya!
 
 ![Robotinho](https://udo-rapidpro-static-app.s3.amazonaws.com/attachments/191/6077/steps/f545e0a8-5c0b-4702-b2fd-5a08e4f2a1e1.png "Robotinho")
-
-
-
-Collapse 
