@@ -119,11 +119,11 @@ Once adding examples is done, you must commit the updates made. To do it, click 
 
 ![BotHubSave](https://udo-rapidpro-static-app.s3.amazonaws.com/attachments/191/6077/steps/3c0324f7-aff2-4e49-8895-7e269bf08ef1.jpeg "Save the training updates")
 
-## Intengrating the Bothub trainning to your Organization
+## Integrating the Bothub trainning to your Organization
 
 Now that we have an NLP repository available it's needed to add that mechanism to flows so messages can be analyzed by.
 
-Still on Bothub, acces **Analyze Text** tab and copy the *Authorization* code from your repository.
+Still on Bothub, access **Analyze Text** tab and copy the *Authorization* code from your repository.
 
 ![BotHubToken](https://udo-rapidpro-static-app.s3.amazonaws.com/attachments/191/6077/steps/1696a369-35dd-4bd7-894e-4ab8f16d5e33.jpeg "Copy the Authorization token")
 
