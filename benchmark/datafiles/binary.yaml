@@ -1,0 +1,32 @@
+language: en
+train:
+    - text: "yes"
+      intent: "affirmative"
+    - text: "yeap"
+      intent: "affirmative"
+    - text: "okay"
+      intent: "affirmative"
+    - text: "of course"
+      intent: "affirmative"
+    - text: "no"
+      intent: "negative"
+    - text: "nop"
+      intent: "negative"
+    - text: "not"
+      intent: "negative"
+    - text: "maybe"
+      intent: "maybe"
+    - text: "maybe yes"
+      intent: "maybe"
+    - text: "maybe no"
+      intent: "maybe"
+tests:
+    - text: "yes"
+      expected:
+        - intent: "affirmative"
+    - text: "no"
+      expected:
+        - intent: "negative"
+    - text: "maybe"
+      expected:
+        - intent: "maybe"

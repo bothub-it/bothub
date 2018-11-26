@@ -1,0 +1,302 @@
+language: en
+tests:
+    - text: "O Real Madrid jogará hoje?"
+      expected:
+        - intent: "esporte"
+    - text: "Em que colocação está o Botafogo?"
+      expected:
+        - intent: "esporte"
+    - text: "Quais partidas da rodada atual serão televisionadas?"
+      expected:
+        - intent: "esporte"
+    - text: "Quantos gols o Barcelona fez no Liverpool?"
+      expected:
+        - intent: "esporte"
+    - text: "Quem é o favorito do brasileirão?"
+      expected:
+        - intent: "esporte"
+    - text: "Neymar está jogando em que time?"
+      expected:
+        - intent: "esporte"
+    - text: "Qual time revelou o jogador Firmino?"
+      expected:
+        - intent: "esporte"
+    - text: "Quando vai acontecer o próximo amistoso da seleção brasileira?"
+      expected:
+        - intent: "esporte"
+    - text: "Quem foi o maior goleador da história?"
+      expected:
+        - intent: "esporte"
+    - text: "Quem foi o melhor jogador do mundo Pelé ou Maradona?"
+      expected:
+        - intent: "esporte"
+    - text: "Tem alguma lanchonete aberta?"
+      expected:
+        - intent: "comida"
+    - text: "Qual o fastfood mais próximo da minha casa?"
+      expected:
+        - intent: "comida"
+    - text: "Qual o cardápio do restaurante Divina's?"
+      expected:
+        - intent: "comida"
+    - text: "Onde posso comer hamburguer hoje?"
+      expected:
+        - intent: "comida"
+    - text: "Qual a cafeteria menos lotada na sexta feira?"
+      expected:
+        - intent: "comida"
+    - text: "qual a faixa de preço do gbarbosa?"
+      expected:
+        - intent: "comida"
+    - text: "O Careca abre segunda de 19:00 horas?"
+      expected:
+        - intent: "comida"
+    - text: "Quanto custa a pizza de frango?"
+      expected:
+        - intent: "comida"
+    - text: "Quais os melhores rodizios da cidade?"
+      expected:
+        - intent: "comida"
+    - text: "Qual o delivery de sushi mais próximo da minha residência?"
+      expected:
+        - intent: "comida"
+    - text: "Quais filmes de ação você me recomendaria?"
+      expected:
+        - intent: "cinema"
+    - text: "Quem está estrelando uma noite no museu?"
+      expected:
+        - intent: "cinema"
+    - text: "Quais os melhores documentários sobre astronomia?"
+      expected:
+        - intent: "cinema"
+    - text: "Você já assistiu todo mundo em pânico?"
+      expected:
+        - intent: "cinema"
+    - text: "Quais os clássicos de terror?"
+      expected:
+        - intent: "cinema"
+    - text: "Quais os melhores filmes de steven spielberg?"
+      expected:
+        - intent: "cinema"
+    - text: "Ainda existem locadoras de dvd?"
+      expected:
+        - intent: "cinema"
+    - text: "Atores mais cotados para fazer Jurasic Park?"
+      expected:
+        - intent: "cinema"
+    - text: "Brad pitt atuou em quantos filmes de drama?"
+      expected:
+        - intent: "cinema"
+    - text: "Quando foi lançado desventuras em série?"
+      expected:
+        - intent: "cinema"
+    - text: "Quantas pessoas nascem na indonésia a cada ano?"
+      expected:
+        - intent: "geografia"
+    - text: "Qual o índice pluviométrico da carolina do norte?"
+      expected:
+        - intent: "geografia"
+    - text: "Quantos países fazem fronteira com o Cazaquistão?"
+      expected:
+        - intent: "geografia"
+    - text: "Qual a cidade mais quente da Nigéria?"
+      expected:
+        - intent: "geografia"
+    - text: "Qual pais com maior volume populacional do mundo?"
+      expected:
+        - intent: "geografia"
+    - text: "Qual é a área do Congo?"
+      expected:
+        - intent: "geografia"
+    - text: "Vai chover hoje?"
+      expected:
+        - intent: "geografia"
+    - text: "Quantas pessoas vivem hoje em Alagoas?"
+      expected:
+        - intent: "geografia"
+    - text: "Qual a taxa de desemprego no Brasil?"
+      expected:
+        - intent: "geografia"
+    - text: "Quantos continentes existem no planeta?"
+      expected:
+        - intent: "geografia"
+    - text: "Preciso encontrar um bom psicólogo"
+      expected:
+        - intent: "saude"
+    - text: "Qual médico eu deveria consultar para examinar os meus olhos?"
+      expected:
+        - intent: "saude"
+    - text: "Estou sentindo uma forte dor nas costas o que devo fazer?"
+      expected:
+        - intent: "saude"
+    - text: "Contraí uma gripe pesada devo tomar vitamina C?"
+      expected:
+        - intent: "saude"
+    - text: "Meu filho está engasgado como devo proceder?"
+      expected:
+        - intent: "saude"
+    - text: "Me feri com uma tesoura posso contrair tétano?"
+      expected:
+        - intent: "saude"
+    - text: "Preciso me vacinar contra gripe."
+      expected:
+        - intent: "saude"
+    - text: "Onde fica o posto de saúde mais próximo?"
+      expected:
+        - intent: "saude"
+    - text: "Existe alguma clínica 24h na minha cidade?"
+      expected:
+        - intent: "saude"
+    - text: "Como posso descobrir se estou diabético?"
+      expected:
+        - intent: "saude"
+    - text: "Eu posso pagar em uma lotérica?"
+      expected:
+        - intent: "financeiro"
+    - text: "Posso pagar o boleto após o vencimento?"
+      expected:
+        - intent: "financeiro"
+    - text: "Posso fazer adiantamento do valor devido?"
+      expected:
+        - intent: "financeiro"
+    - text: "tem problema em efetuar o pagamento amanhã?"
+      expected:
+        - intent: "financeiro"
+    - text: "É possível atualizar a data de vencimento?"
+      expected:
+        - intent: "financeiro"
+    - text: "Eu gostaria de cancelar a minha compra"
+      expected:
+        - intent: "financeiro"
+    - text: "Você poderia estornar a diferença da minha compra?"
+      expected:
+        - intent: "financeiro"
+    - text: "Existe a possibilidade de financiar o restante da dívida?"
+      expected:
+        - intent: "financeiro"
+    - text: "Eu já paguei"
+      expected:
+        - intent: "financeiro"
+    - text: "Não quero mais receber essas cobranças"
+      expected:
+        - intent: "financeiro"
+    - text: "Tô querendo moto modelo mais novo"
+      expected:
+        - intent: "automoveis"
+    - text: "Compro ou troco carro usado"
+      expected:
+        - intent: "automoveis"
+    - text: "Vende-se moto honda 150"
+      expected:
+        - intent: "automoveis"
+    - text: "Quando sai o novo lançamento do FIAT"
+      expected:
+        - intent: "automoveis"
+    - text: "Quero fazer manutenção no meu automóvel"
+      expected:
+        - intent: "automoveis"
+    - text: "Troco carro uno 98 por moto"
+      expected:
+        - intent: "automoveis"
+    - text: "Economizei para trocar de carro esse ano"
+      expected:
+        - intent: "automoveis"
+    - text: "Compro carro que não seja caro"
+      expected:
+        - intent: "automoveis"
+    - text: "Quero comprar o modelo atual do Civic"
+      expected:
+        - intent: "automoveis"
+    - text: "Estou interessado na CB300"
+      expected:
+        - intent: "automoveis"
+    - text: "Como faço pra votar?"
+      expected:
+        - intent: "politica"
+    - text: "Posso escolher mais de um presidente?"
+      expected:
+        - intent: "politica"
+    - text: "Tenho dúvida quanto ao canditado Péricles"
+      expected:
+        - intent: "politica"
+    - text: "O candidato 15 é ladrão"
+      expected:
+        - intent: "politica"
+    - text: "Vou votar em ninguém esse ano"
+      expected:
+        - intent: "politica"
+    - text: "Meu voto será pro 51"
+      expected:
+        - intent: "politica"
+    - text: "Prefiro o Partido Roxo"
+      expected:
+        - intent: "politica"
+    - text: "Canditado 51 é ladrão vou votar no 15"
+      expected:
+        - intent: "politica"
+    - text: "Qual o político menos ladrão pra votar?"
+      expected:
+        - intent: "politica"
+    - text: "Peter para presidente do Brasil"
+      expected:
+        - intent: "politica"
+    - text: "Tô afim de começar um jogo novo"
+      expected:
+        - intent: "games"
+    - text: "Tô com task vou jogar só amanhã"
+      expected:
+        - intent: "games"
+    - text: "Posso jogar com vocês?"
+      expected:
+        - intent: "games"
+    - text: "Esse game pega Multiplayer"
+      expected:
+        - intent: "games"
+    - text: "Dá pra logar no PUBG?"
+      expected:
+        - intent: "games"
+    - text: "Tô esperando você ficar online pra gente jogar"
+      expected:
+        - intent: "games"
+    - text: "Qual o seu game favorito?"
+      expected:
+        - intent: "games"
+    - text: "No PC eu uso a Steam"
+      expected:
+        - intent: "games"
+    - text: "Já jogou algum jogo da Blizzard?"
+      expected:
+        - intent: "games"
+    - text: "Gosto de jogar Minecraft no celular"
+      expected:
+        - intent: "games"
+    - text: "Como tratar as pulgas do meu Javalí?"
+      expected:
+        - intent: "pets"
+    - text: "Meus cachorros não se dão bem"
+      expected:
+        - intent: "pets"
+    - text: "Minha gata está vomitando muitas bolas de pelo"
+      expected:
+        - intent: "pets"
+    - text: "Meu cachorro não está muito bem de saúde"
+      expected:
+        - intent: "pets"
+    - text: "Estou criando um novo filhote de urso"
+        expected:
+        - intent: "pets"
+    - text: "Meu porco de estimação está com pulgas"
+      expected:
+        - intent: "pets"
+    - text: "Meus pets latem muito como resolver?"
+      expected:
+        - intent: "pets"
+    - text: "Quanto tempo vive um gato egípcio?"
+      expected:
+        - intent: "pets"
+    - text: "tenho muitos pets como cuidar de todos?"
+      expected:
+        - intent: "pets"
+    - text: "posso criar um cachorro em apartamento?"
+      expected:
+        - intent: "pets"

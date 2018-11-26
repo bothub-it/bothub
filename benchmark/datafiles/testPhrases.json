@@ -1,0 +1,404 @@
+{
+    "data": [
+        {
+            "value":"O Real Madrid jogará hoje?",
+            "intent":"esporte"
+        },
+        {
+            "value":"Em que colocação está o Botafogo?",
+            "intent":"esporte"
+        },
+        {
+            "value":"Quais partidas da rodada atual serão televisionadas?",
+            "intent":"esporte"
+        },
+        {
+            "value":"Quantos gols o Barcelona fez no Liverpool?",
+            "intent":"esporte"
+        },
+        {
+            "value":"Quem é o favorito do brasileirão?",
+            "intent":"esporte"
+        },
+        {
+            "value":"Neymar está jogando em que time?",
+            "intent":"esporte"
+        },
+        {
+            "value":"Qual time revelou o jogador Firmino?",
+            "intent":"esporte"
+        },
+        {
+            "value":"Quando vai acontecer o próximo amistoso da seleção brasileira?",
+            "intent":"esporte"
+        },
+        {
+            "value":"Quem foi o maior goleador da história?",
+            "intent":"esporte"
+        },
+        {
+            "value":"Quem foi o melhor jogador do mundo Pelé ou Maradona?",
+            "intent":"esporte"
+        },
+        {
+            "value":"Tem alguma lanchonete aberta?",
+            "intent":"comida"
+        },
+        {
+            "value":"Qual o fastfood mais próximo da minha casa?",
+            "intent":"comida"
+        },
+        {
+            "value":"Qual o cardápio do restaurante Divina's?",
+            "intent":"comida"
+        },
+        {
+            "value":"Onde posso comer hamburguer hoje?",
+            "intent":"comida"
+        },
+        {
+            "value":"Qual a cafeteria menos lotada na sexta feira?",
+            "intent":"comida"
+        },
+        {
+            "value":"qual a faixa de preço do gbarbosa?",
+            "intent":"comida"
+        },
+        {
+            "value":"O Careca abre segunda de 19:00 horas?",
+            "intent":"comida"
+        },
+        {
+            "value":"Quanto custa a pizza de frango?",
+            "intent":"comida"
+        },
+        {
+            "value":"Quais os melhores rodizios da cidade?",
+            "intent":"comida"
+        },
+        {
+            "value":"Qual o delivery de sushi mais próximo da minha residência?",
+            "intent":"comida"
+        },
+        {
+            "value":"Quais filmes de ação você me recomendaria?",
+            "intent":"cinema"
+        },
+        {
+            "value":"Quem está estrelando uma noite no museu?",
+            "intent":"cinema"
+        },
+        {
+            "value":"Quais os melhores documentários sobre astronomia?",
+            "intent":"cinema"
+        },
+        {
+            "value":"Você já assistiu todo mundo em pânico?",
+            "intent":"cinema"
+        },
+        {
+            "value":"Quais os clássicos de terror?",
+            "intent":"cinema"
+        },
+        {
+            "value":"Quais os melhores filmes de steven spielberg?",
+            "intent":"cinema"
+        },
+        {
+            "value":"Ainda existem locadoras de dvd?",
+            "intent":"cinema"
+        },
+        {
+            "value":"Atores mais cotados para fazer Jurasic Park?",
+            "intent":"cinema"
+        },
+        {
+            "value":"Brad pitt atuou em quantos filmes de drama?",
+            "intent":"cinema"
+        },
+        {
+            "value":"Quando foi lançado desventuras em série?",
+            "intent":"cinema"
+        },
+        {
+            "value":"Quantas pessoas nascem na indonésia a cada ano?",
+            "intent":"geografia"
+        },
+        {
+            "value":"Qual o índice pluviométrico da carolina do norte?",
+            "intent":"geografia"
+        },
+        {
+            "value":"Quantos países fazem fronteira com o Cazaquistão?",
+            "intent":"geografia"
+        },
+        {
+            "value":"Qual a cidade mais quente da Nigéria?",
+            "intent":"geografia"
+        },
+        {
+            "value":"Qual pais com maior volume populacional do mundo?",
+            "intent":"geografia"
+        },
+        {
+            "value":"Qual é a área do Congo?",
+            "intent":"geografia"
+        },
+        {
+            "value":"Vai chover hoje?",
+            "intent":"geografia"
+        },
+        {
+            "value":"Quantas pessoas vivem hoje em Alagoas?",
+            "intent":"geografia"
+        },
+        {
+            "value":"Qual a taxa de desemprego no Brasil?",
+            "intent":"geografia"
+        },
+        {
+            "value":"Quantos continentes existem no planeta?",
+            "intent":"geografia"
+        },
+        {
+            "value":"Preciso encontrar um bom psicólogo",
+            "intent":"saude"
+        },
+        {
+            "value":"Qual médico eu deveria consultar para examinar os meus olhos?",
+            "intent":"saude"
+        },
+        {
+            "value":"Estou sentindo uma forte dor nas costas o que devo fazer?",
+            "intent":"saude"
+        },
+        {
+            "value":"Contraí uma gripe pesada devo tomar vitamina C?",
+            "intent":"saude"
+        },
+        {
+            "value":"Meu filho está engasgado como devo proceder?",
+            "intent":"saude"
+        },
+        {
+            "value":"Me feri com uma tesoura posso contrair tétano?",
+            "intent":"saude"
+        },
+        {
+            "value":"Preciso me vacinar contra gripe.",
+            "intent":"saude"
+        },
+        {
+            "value":"Onde fica o posto de saúde mais próximo?",
+            "intent":"saude"
+        },
+        {
+            "value":"Existe alguma clínica 24h na minha cidade?",
+            "intent":"saude"
+        },
+        {
+            "value":"Como posso descobrir se estou diabético?",
+            "intent":"saude"
+        },
+        {
+            "value":"Eu posso pagar em uma lotérica?",
+            "intent":"financeiro"
+        },
+        {
+            "value":"Posso pagar o boleto após o vencimento?",
+            "intent":"financeiro"
+        },
+        {
+            "value":"Posso fazer adiantamento do valor devido?",
+            "intent":"financeiro"
+        },
+        {
+            "value":"tem problema em efetuar o pagamento amanhã?",
+            "intent":"financeiro"
+        },
+        {
+            "value":"É possível atualizar a data de vencimento?",
+            "intent":"financeiro"
+        },
+        {
+            "value":"Eu gostaria de cancelar a minha compra",
+            "intent":"financeiro"
+        },
+        {
+            "value":"Você poderia estornar a diferença da minha compra?",
+            "intent":"financeiro"
+        },
+        {
+            "value":"Existe a possibilidade de financiar o restante da dívida?",
+            "intent":"financeiro"
+        },
+        {
+            "value":"Eu já paguei",
+            "intent":"financeiro"
+        },
+        {
+            "value":"Não quero mais receber essas cobranças",
+            "intent":"financeiro"
+        },
+        {
+            "value":"Tô querendo moto modelo mais novo",
+            "intent":"automoveis"
+        },
+        {
+            "value":"Compro ou troco carro usado",
+            "intent":"automoveis"
+        },
+        {
+            "value":"Vende-se moto honda 150",
+            "intent":"automoveis"
+        },
+        {
+            "value":"Quando sai o novo lançamento do FIAT",
+            "intent":"automoveis"
+        },
+        {
+            "value":"Quero fazer manutenção no meu automóvel",
+            "intent":"automoveis"
+        },
+        {
+            "value":"Troco carro uno 98 por moto",
+            "intent":"automoveis"
+        },
+        {
+            "value":"Economizei para trocar de carro esse ano",
+            "intent":"automoveis"
+        },
+        {
+            "value":"Compro carro que não seja caro",
+            "intent":"automoveis"
+        },
+        {
+            "value":"Quero comprar o modelo atual do Civic",
+            "intent":"automoveis"
+        },
+        {
+            "value":"Estou interessado na CB300",
+            "intent":"automoveis"
+        },
+        {
+            "value":"Como faço pra votar?",
+            "intent":"politica"
+        },
+        {
+            "value":"Posso escolher mais de um presidente?",
+            "intent":"politica"
+        },
+        {
+            "value":"Tenho dúvida quanto ao canditado Péricles",
+            "intent":"politica"
+        },
+        {
+            "value":"O candidato 15 é ladrão",
+            "intent":"politica"
+        },
+        {
+            "value":"Vou votar em ninguém esse ano",
+            "intent":"politica"
+        },
+        {
+            "value":"Meu voto será pro 51",
+            "intent":"politica"
+        },
+        {
+            "value":"Prefiro o Partido Roxo",
+            "intent":"politica"
+        },
+        {
+            "value":"Canditado 51 é ladrão vou votar no 15",
+            "intent":"politica"
+        },
+        {
+            "value":"Qual o político menos ladrão pra votar?",
+            "intent":"politica"
+        },
+        {
+            "value":"Peter para presidente do Brasil",
+            "intent":"politica"
+        },
+        {
+            "value":"Tô afim de começar um jogo novo",
+            "intent":"games"
+        },
+        {
+            "value":"Tô com task vou jogar só amanhã",
+            "intent":"games"
+        },
+        {
+            "value":"Posso jogar com vocês?",
+            "intent":"games"
+        },
+        {
+            "value":"Esse game pega Multiplayer",
+            "intent":"games"
+        },
+        {
+            "value":"Dá pra logar no PUBG?",
+            "intent":"games"
+        },
+        {
+            "value":"Tô esperando você ficar online pra gente jogar",
+            "intent":"games"
+        },
+        {
+            "value":"Qual o seu game favorito?",
+            "intent":"games"
+        },
+        {
+            "value":"No PC eu uso a Steam",
+            "intent":"games"
+        },
+        {
+            "value":"Já jogou algum jogo da Blizzard?",
+            "intent":"games"
+        },
+        {
+            "value":"Gosto de jogar Minecraft no celular",
+            "intent":"games"
+        },
+        {
+            "value":"Como tratar as pulgas do meu Javalí?",
+            "intent":"pets"
+        },
+        {
+            "value":"Meus cachorros não se dão bem",
+            "intent":"pets"
+        },
+        {
+            "value":"Minha gata está vomitando muitas bolas de pelo",
+            "intent":"pets"
+        },
+        {
+            "value":"Meu cachorro não está muito bem de saúde",
+            "intent":"pets"
+        },
+        {
+            "value":"Estou criando um novo filhote de urso",
+            "intent":"pets"
+        },
+        {
+            "value":"Meu porco de estimação está com pulgas",
+            "intent":"pets"
+        },
+        {
+            "value":"Meus pets latem muito como resolver?",
+            "intent":"pets"
+        },
+        {
+            "value":"Quanto tempo vive um gato egípcio?",
+            "intent":"pets"
+        },
+        {
+            "value":"tenho muitos pets como cuidar de todos?",
+            "intent":"pets"
+        },
+        {
+            "value":"posso criar um cachorro em apartamento?",
+            "intent":"pets"
+        }
+    ]
+}
