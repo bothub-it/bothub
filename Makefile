@@ -19,24 +19,24 @@ install_requirements:
 	@echo "${SUCCESS}✔${NC} Created .env"
 
 init_stack:
-	@echo "${SUCCESS}✔${NC} Start Build bothub-engine"
+	@echo "${SUCCESS}✔${NC} Starting Build bothub-engine"
 	@docker-compose -f projects/bothub-engine/docker-compose.yml build
 	@docker-compose -f projects/bothub-engine/docker-compose.yml up -d
-	@echo "${SUCCESS}✔${NC} Start Build bothub-webapp"
+	@echo "${SUCCESS}✔${NC} Starting Build bothub-webapp"
 	@docker-compose -f projects/bothub-webapp/docker-compose.yml build
 	@docker-compose -f projects/bothub-webapp/docker-compose.yml up -d
-	@echo "${SUCCESS}✔${NC} Start Build bothub-nlp"
+	@echo "${SUCCESS}✔${NC} Starting Build bothub-nlp"
 	@docker-compose -f projects/bothub-nlp/docker-compose.yml build --build-arg DOWNLOAD_SPACY_MODELS=en:en_core_web_md
 	@docker-compose -f projects/bothub-nlp/docker-compose.yml up -d
 	@echo "${SUCCESS}✔${NC} Finish"
 
 
 destroy_stack:
-	@echo "${SUCCESS}✔${NC} Destroy Build bothub-engine"
+	@echo "${SUCCESS}✔${NC} Destroying Build bothub-engine"
 	@docker-compose -f projects/bothub-engine/docker-compose.yml down --rmi all
-	@echo "${SUCCESS}✔${NC} Destroy Build bothub-webapp"
+	@echo "${SUCCESS}✔${NC} Destroying Build bothub-webapp"
 	@docker-compose -f projects/bothub-webapp/docker-compose.yml down --rmi all
-	@echo "${SUCCESS}✔${NC} Destroy Build bothub-nlp"
+	@echo "${SUCCESS}✔${NC} Destroying Build bothub-nlp"
 	@docker-compose -f projects/bothub-nlp/docker-compose.yml down --rmi all
 	@echo "${SUCCESS}✔${NC} Finish"
 
