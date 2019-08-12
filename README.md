@@ -24,6 +24,16 @@ repositories.
 
 All documentation available on [docs.bothub.it](https://docs.bothub.it/).
 
+## Development
+
+Use ```make``` commands to ```install_requirements```, ```init_stack``` and ```destroy_stack```.
+
+| Command | Description |
+|--|--|
+| make install_requirements | Clone projects and install all dependencies
+| make init_stack | Build Projects
+| make destroy_stack | Destroy all containers
+
 ## Contributing
 
 **We are looking for collaboration from the Open Source community!** There's so much we want to do, 
