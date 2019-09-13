@@ -16,6 +16,8 @@ install_requirements:
 	@echo "SUPPORTED_LANGUAGES=en:en_core_web_md|pt:pt" >> .env
 	@echo "DEFAULT_DATABASE=postgres://bothub:bothub@database:5432/bothub" >> .env
 	@echo "ENGINE_PORT=8000" >> .env
+
+	@cp -a projects/bothub-nlp/bothub-nlp-nlu-worker/bothub_nlp_nlu_worker/bothub_nlp_celery/* projects/bothub-nlp/bothub-nlp-api/bothub_nlp_api/celerytasks/
 	@echo "${SUCCESS}✔${NC} Created .env"
 
 init_stack:
@@ -38,6 +40,16 @@ destroy_stack:
 	@docker-compose -f projects/bothub-webapp/docker-compose.yml down --rmi all
 	@echo "${SUCCESS}✔${NC} Destroying Build bothub-nlp"
 	@docker-compose -f projects/bothub-nlp/docker-compose.yml down --rmi all
+	@echo "${SUCCESS}✔${NC} Finish"
+
+
+restart:
+	@echo "${SUCCESS}✔${NC} Restart Build bothub-engine"
+	@docker-compose -f projects/bothub-engine/docker-compose.yml down --rmi all
+	@echo "${SUCCESS}✔${NC} Restart Build bothub-webapp"
+	@docker-compose -f projects/bothub-webapp/docker-compose.yml down --rmi all
+	@echo "${SUCCESS}✔${NC} Restart Build bothub-nlp"
+	@docker-compose -f projects/bothub-nlp/docker-compose.yml restart
 	@echo "${SUCCESS}✔${NC} Finish"
 
 
