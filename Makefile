@@ -17,9 +17,9 @@ install_requirements:
 	@echo "DEFAULT_DATABASE=postgres://bothub:bothub@database:5432/bothub" >> .env
 	@echo "ENGINE_PORT=8000" >> .env
 	@echo "NLP_API_SERVER_PORT=2657" >> .env
-
-	@cp -a projects/bothub-nlp/bothub-nlp-nlu-worker/bothub_nlp_nlu_worker/bothub_nlp_celery/* projects/bothub-nlp/bothub-nlp-api/bothub_nlp_api/celerytasks/
 	@echo "${SUCCESS}✔${NC} Created .env"
+
+	@echo "${SUCCESS}✔${NC} Finish"
 
 init_stack:
 	@echo "${SUCCESS}✔${NC} Starting Build bothub-engine"
