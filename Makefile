@@ -16,6 +16,7 @@ install_requirements:
 	@echo "SUPPORTED_LANGUAGES=en:en_core_web_md|pt:pt" >> .env
 	@echo "DEFAULT_DATABASE=postgres://bothub:bothub@database:5432/bothub" >> .env
 	@echo "ENGINE_PORT=8000" >> .env
+	@echo "BOTHUB_ENGINE_URL=https://api.bothub.it" >> .env
 	@echo "NLP_API_SERVER_PORT=2657" >> .env
 	@echo "${SUCCESS}✔${NC} Created .env"
 
