@@ -16,7 +16,11 @@ install_requirements:
 	@echo "SUPPORTED_LANGUAGES=en:en_core_web_md|pt:pt" >> .env
 	@echo "DEFAULT_DATABASE=postgres://bothub:bothub@database:5432/bothub" >> .env
 	@echo "ENGINE_PORT=8000" >> .env
+	@echo "BOTHUB_ENGINE_URL=https://api.bothub.it" >> .env
+	@echo "NLP_API_SERVER_PORT=2657" >> .env
 	@echo "${SUCCESS}✔${NC} Created .env"
+
+	@echo "${SUCCESS}✔${NC} Finish"
 
 init_stack:
 	@echo "${SUCCESS}✔${NC} Starting Build bothub-engine"
@@ -38,6 +42,16 @@ destroy_stack:
 	@docker-compose -f projects/bothub-webapp/docker-compose.yml down --rmi all
 	@echo "${SUCCESS}✔${NC} Destroying Build bothub-nlp"
 	@docker-compose -f projects/bothub-nlp/docker-compose.yml down --rmi all
+	@echo "${SUCCESS}✔${NC} Finish"
+
+
+restart:
+	@echo "${SUCCESS}✔${NC} Restart Build bothub-engine"
+	@docker-compose -f projects/bothub-engine/docker-compose.yml down --rmi all
+	@echo "${SUCCESS}✔${NC} Restart Build bothub-webapp"
+	@docker-compose -f projects/bothub-webapp/docker-compose.yml down --rmi all
+	@echo "${SUCCESS}✔${NC} Restart Build bothub-nlp"
+	@docker-compose -f projects/bothub-nlp/docker-compose.yml restart
 	@echo "${SUCCESS}✔${NC} Finish"
 
 
