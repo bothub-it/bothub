@@ -32,7 +32,7 @@ All documentation available on [docs.bothub.it](https://docs.bothub.it/).
 Instead of using standard Docker commands, you may want a little more automated management of your deployment. This is where using Docker-compose can be useful.
 
 * Make sure Docker and Docker-compone are installed and operational.
-* Check if your docker-swarm is enabled, if not, go to the [configuration](https://docs.docker.com/engine/swarm/swarm-tutorial/) session.
+* Check if your docker-swarm is enabled, if not, go to the [configuration](https://docs.docker.com/engine/swarm/swarm-mode/) session.
 * Edit image: bothubit/bothub-(project): develop to specify which image you want to use (see the section Images available in Docker)
 
 
@@ -53,7 +53,7 @@ docker stack deploy --compose-file=docker-compose.yml bothub
 
 after carrying out all the deploy, check if all containers were started with the command:
 ```
-docker ps
+docker service ls
 ```
 
 If it is the first time that you have run the project, you will need to run the migrations to create the tables in the database, for this run the command:
