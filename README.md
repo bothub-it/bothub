@@ -24,15 +24,70 @@ repositories.
 
 All documentation available on [docs.bothub.it](https://docs.bothub.it/).
 
-## Development
+# Deployment
 
-Use ```make``` commands to ```install_requirements```, ```init_stack``` and ```destroy_stack```.
+## Instant Server Installation with Docker
 
-| Command | Description |
+<p align="center">
+    <a href="https://hub.docker.com/u/bothubit"><img src="https://www.docker.com/sites/default/files/d8/styles/role_icon/public/2019-07/horizontal-logo-monochromatic-white.png?itok=SBlK2TGU" width="230" height="70" alt="Bothub" /></a>
+</p>
+
+Instead of using standard Docker commands, you may want a little more automated management of your deployment. This is where using Docker-compose can be useful.
+
+* Make sure Docker and Docker-compone are installed and operational.
+* Check if your docker-swarm is enabled, if not, go to the [installation](https://docs.docker.com/engine/swarm/swarm-tutorial/) session.
+* Edit image: bothubit/bothub-(project): develop to specify which image you want to use (see the section Images available in Docker)
+
+
+Add two networks for internal project communication:
+```
+docker network create bothub-nlp -d overlay
+```
+
+```
+docker network create postgres -d overlay
+```
+
+Then add docker-compose.yml with docker stack
+
+```
+docker stack deploy --compose-file=docker-compose.yml bothub
+```
+
+This docker stack process allows you to upload our services quickly, it automatically downloads our images generated from the Docker Hub itself.
+With that you have practically moved up our entire stack, you will only be missing the frontend.
+
+To build the bothub-webapp project you need to have the dependencies installed correctly:
+
+| # | Version |
 |--|--|
-| make install_requirements | Clone projects and install all dependencies
-| make init_stack | Build Projects
-| make destroy_stack | Destroy all containers
+| git | >= 2.x.x
+| nodejs | >= 12.x.x
+| yarn | >= 1.x.x
+
+To install the project you must clone the project:
+
+```
+make clone_webapp
+```
+
+Then, you can notice that a new folder was created with the project code [bothub-webapp](), just access the directory with the command:
+```
+cd bothub-webapp
+```
+
+and install the project dependencies with the yarn command:
+```
+yarn install
+```
+
+after installing the dependencies, just start bothub-webapp's development server with the command:
+```
+yarn start
+```
+
+this way you will already be able to use our entire stack, remembering that each project has its environment variables configurable, to change consult the documentation for each specific project.
+
 
 ## Contributing
 
