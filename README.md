@@ -68,7 +68,7 @@ To install the project you must clone the project:
 make clone_webapp
 ```
 
-Then, you can notice that a new folder was created with the project code [bothub-webapp](), just access the directory with the command:
+Then, you can notice that a new folder was created with the project code [bothub-webapp](https://github.com/bothub-it/bothub-webapp), just access the directory with the command:
 ```
 cd bothub-webapp
 ```
