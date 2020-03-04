@@ -32,7 +32,7 @@ All documentation available on [docs.bothub.it](https://docs.bothub.it/).
 Instead of using standard Docker commands, you may want a little more automated management of your deployment. This is where using Docker-compose can be useful.
 
 * Make sure Docker and Docker-compone are installed and operational.
-* Check if your docker-swarm is enabled, if not, go to the [installation](https://docs.docker.com/engine/swarm/swarm-tutorial/) session.
+* Check if your docker-swarm is enabled, if not, go to the [configuration](https://docs.docker.com/engine/swarm/swarm-tutorial/) session.
 * Edit image: bothubit/bothub-(project): develop to specify which image you want to use (see the section Images available in Docker)
 
 
