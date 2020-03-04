@@ -61,6 +61,11 @@ If it is the first time that you have run the project, you will need to run the 
 make engine_migration
 ```
 
+to populate the database with fakes data, you can use the command:
+```
+make engine_fakedata
+```
+
 This docker stack process allows you to upload our services quickly, it automatically downloads our images generated from the Docker Hub itself.
 With that you have practically moved up our entire stack, you will only be missing the frontend.
 
