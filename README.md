@@ -28,9 +28,7 @@ All documentation available on [docs.bothub.it](https://docs.bothub.it/).
 
 ## Instant Server Installation with Docker
 
-<p align="center">
-    <a href="https://hub.docker.com/u/bothubit"><img src="https://www.docker.com/sites/default/files/d8/styles/role_icon/public/2019-07/horizontal-logo-monochromatic-white.png?itok=SBlK2TGU" width="230" height="70" alt="Bothub" /></a>
-</p>
+<a href="https://hub.docker.com/u/bothubit"><img src="https://www.docker.com/sites/default/files/d8/styles/role_icon/public/2019-07/horizontal-logo-monochromatic-white.png?itok=SBlK2TGU" width="230" height="70" alt="Bothub" /></a>
 
 Instead of using standard Docker commands, you may want a little more automated management of your deployment. This is where using Docker-compose can be useful.
 
