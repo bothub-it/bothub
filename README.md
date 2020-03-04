@@ -16,8 +16,7 @@ You can read more about the project's purpose on this
 
 This repo is the "master" repo for all Bothub-related projects. It hosts 
 the documentation and other misc. resources for Bothub. Code for other
-projects, like the [WebApp](https://github.com/ilhasoft/bothub-webapp), [Engine](https://github.com/ilhasoft/bothub-engine) 
-and [NLP](https://github.com/ilhasoft/bothub-nlp), are hosted in other 
+projects, like the [WebApp](https://github.com/bothub-it/bothub-webapp), [Engine](https://github.com/bothub-it/bothub-engine), [NLP Worker](https://github.com/bothub-it/bothub-nlp), [NLP API](https://github.com/bothub-it/bothub-nlp-api) and [NLP On Demand](https://github.com/bothub-it/bothub-nlp-on-demand), are hosted in other 
 repositories.
 
 ## Documentation
@@ -55,7 +54,7 @@ docker stack deploy --compose-file=docker-compose.yml bothub
 This docker stack process allows you to upload our services quickly, it automatically downloads our images generated from the Docker Hub itself.
 With that you have practically moved up our entire stack, you will only be missing the frontend.
 
-To build the bothub-webapp project you need to have the dependencies installed correctly:
+To build the [bothub-webapp](https://github.com/bothub-it/bothub-webapp) project you need to have the dependencies installed correctly:
 
 | # | Version |
 |--|--|
