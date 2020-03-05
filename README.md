@@ -16,23 +16,90 @@ You can read more about the project's purpose on this
 
 This repo is the "master" repo for all Bothub-related projects. It hosts 
 the documentation and other misc. resources for Bothub. Code for other
-projects, like the [WebApp](https://github.com/ilhasoft/bothub-webapp), [Engine](https://github.com/ilhasoft/bothub-engine) 
-and [NLP](https://github.com/ilhasoft/bothub-nlp), are hosted in other 
+projects, like the [WebApp](https://github.com/bothub-it/bothub-webapp), [Engine](https://github.com/bothub-it/bothub-engine), [NLP Worker](https://github.com/bothub-it/bothub-nlp), [NLP API](https://github.com/bothub-it/bothub-nlp-api) and [NLP On Demand](https://github.com/bothub-it/bothub-nlp-on-demand), are hosted in other 
 repositories.
 
 ## Documentation
 
 All documentation available on [docs.bothub.it](https://docs.bothub.it/).
 
-## Development
+# Deployment
 
-Use ```make``` commands to ```install_requirements```, ```init_stack``` and ```destroy_stack```.
+## Instant Server Installation with Docker
 
-| Command | Description |
+<a href="https://hub.docker.com/u/bothubit"><img src="https://www.docker.com/sites/default/files/d8/styles/role_icon/public/2019-07/horizontal-logo-monochromatic-white.png?itok=SBlK2TGU" width="230" height="70" alt="Bothub" /></a>
+
+Instead of using standard Docker commands, you may want a little more automated management of your deployment. This is where using Docker-compose can be useful.
+
+* Make sure Docker and Docker-compone are installed and operational.
+* Check if your docker-swarm is enabled, if not, go to the [configuration](https://docs.docker.com/engine/swarm/swarm-mode/) session.
+* Edit image: bothubit/bothub-(project): develop to specify which image you want to use (see the section Images available in Docker)
+
+
+Add two networks for internal project communication:
+```
+docker network create bothub-nlp -d overlay
+```
+
+```
+docker network create postgres -d overlay
+```
+
+Then add docker-compose.yml with docker stack
+
+```
+docker stack deploy --compose-file=docker-compose.yml bothub
+```
+
+after carrying out all the deploy, check if all containers were started with the command:
+```
+docker service ls
+```
+
+If it is the first time that you have run the project, you will need to run the migrations to create the tables in the database, for this run the command:
+```
+make engine_migration
+```
+
+to populate the database with fakes data, you can use the command:
+```
+make engine_fakedata
+```
+
+This docker stack process allows you to upload our services quickly, it automatically downloads our images generated from the Docker Hub itself.
+With that you have practically moved up our entire stack, you will only be missing the frontend.
+
+To build the [bothub-webapp](https://github.com/bothub-it/bothub-webapp) project you need to have the dependencies installed correctly:
+
+| # | Version |
 |--|--|
-| make install_requirements | Clone projects and install all dependencies
-| make init_stack | Build Projects
-| make destroy_stack | Destroy all containers
+| git | >= 2.x.x
+| nodejs | >= 12.x.x
+| yarn | >= 1.x.x
+
+To install the project you must clone the project:
+
+```
+make clone_webapp
+```
+
+Then, you can notice that a new folder was created with the project code [bothub-webapp](https://github.com/bothub-it/bothub-webapp), just access the directory with the command:
+```
+cd bothub-webapp
+```
+
+and install the project dependencies with the yarn command:
+```
+yarn install
+```
+
+after installing the dependencies, just start bothub-webapp's development server with the command:
+```
+yarn start
+```
+
+this way you will already be able to use our entire stack, remembering that each project has its environment variables configurable, to change consult the documentation for each specific project.
+
 
 ## Contributing
 

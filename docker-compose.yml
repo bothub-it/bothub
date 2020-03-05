@@ -1,0 +1,107 @@
+version: '3.6'
+
+services:
+
+  bothub:
+    image: bothubit/bothub-engine:develop
+    deploy:
+      mode: replicated
+      replicas: 1
+    ports:
+      - 8000:80
+    networks:
+      - default
+      - postgres
+    environment:
+      - ENVIRONMENT=staging
+      - SECRET_KEY=SK
+      - DEBUG=true
+      - ALLOWED_HOSTS=*
+      - DEFAULT_DATABASE=postgres://bothub:bothub@postgres:5432/bothub
+      - BOTHUB_WEBAPP_BASE_URL=http://bothub:8080/
+      - BOTHUB_NLP_BASE_URL=http://bothub-nlp-api:2657/
+      - SUPPORTED_LANGUAGES=en:en_core_web_lg|pt_br
+      - BASE_URL=http://bothub
+
+  bothub-nlp-api:
+    image: bothubit/bothub-nlp-api:develop
+    depends_on:
+      - redis
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+    ports:
+      - 2657:2657
+    networks:
+      - default
+      - bothub-nlp
+    environment:
+      - ENVIRONMENT=staging
+      - SUPPORTED_LANGUAGES=en:en_core_web_lg|pt_br
+      - BOTHUB_NLP_CELERY_BROKER_URL=redis://redis:6379/0
+      - BOTHUB_NLP_CELERY_BACKEND_URL=redis://redis:6379/0
+      - BOTHUB_NLP_NLU_AGROUP_LANGUAGE_QUEUE=true
+      - BOTHUB_ENGINE_URL=http://bothub
+
+  postgres:
+    image: postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - default
+      - postgres
+    environment:
+      - POSTGRES_USER=bothub
+      - POSTGRES_PASSWORD=bothub
+      - POSTGRES_DB=bothub
+
+  bothub-nlp-nlu-worker-on-demand:
+    image: bothubit/bothub-nlp-on-demand:develop
+    depends_on:
+      - redis
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - default
+      - bothub-nlp
+      - postgres
+    ports:
+      - 2658:2658
+    environment:
+      - ENVIRONMENT=staging
+      - SUPPORTED_LANGUAGES=en:en_core_web_lg|pt_br
+      - BOTHUB_NLP_CELERY_BROKER_URL=redis://redis:6379/0
+      - BOTHUB_NLP_CELERY_BACKEND_URL=redis://redis:6379/0
+      - BOTHUB_NLP_NLU_WORKER_DOCKER_IMAGE_NAME=bothubit/bothub-nlp
+      - BOTHUB_NLP_NLU_WORKER_ON_DEMAND_NETWORKS=postgres,bothub-nlp
+      - BOTHUB_NLP_NLU_WORKER_ON_DEMAND_RUN_IN_WORKER_NODE=false
+      - BOTHUB_ENGINE_URL=http://bothub
+      - BOTHUB_SERVICE=docker
+
+  redis:
+    image: redis
+    hostname: redis
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - default
+      - bothub-nlp
+
+volumes:
+  postgres:
+
+networks:
+  postgres:
+    external: true
+  bothub-nlp:
+    external: true
