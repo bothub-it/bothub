@@ -6,7 +6,7 @@ Bothub is an open platform for predicting, training and sharing NLP datasets in 
 
 ## About
 
-Bothub is the Github for NLP datasets, that allows to build, improve and translate them.
+BotHub is an NLP as a service tool that enables users to build, improve or translate datasets that extracts metadata from text.
 
 You can read more about the project's purpose on this
 [blog post](https://push.al/en/this-is-how-bothub-started/).
